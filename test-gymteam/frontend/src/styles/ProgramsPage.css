@@ -1,0 +1,221 @@
+/* src/styles/ProgramsPage.css */
+
+.programs-page {
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 40px 0;
+}
+
+.programs-page .container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.back-link {
+  display: inline-block;
+  color: #F66297;
+  text-decoration: none;
+  font-family: 'Gilroy', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 30px;
+  transition: 0.3s;
+}
+
+
+
+.programs-content {
+  background: #ffffff;
+  border-radius: 30px;
+  padding: 40px 40px;
+}
+
+.programs-title {
+  font-size: 32px;
+  font-weight: 600;
+  font-family: 'Gilroy', sans-serif;
+  color: #000000;
+  margin: 0 0 15px 0;
+  text-align: center;
+}
+
+.programs-description {
+  font-size: 18px;
+  font-weight: 100;
+  font-family: 'Gilroy', sans-serif;
+  color: #000000;
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+
+.offer-link {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.offer-link-text {
+  color: #000000;
+  font-family: 'Gilroy', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  text-decoration: none;
+  padding-bottom: 4px;
+  transition: 0.3s;
+}
+
+
+
+.form-wrapper {
+  border-radius: 20px;
+  padding: 30px 30px;
+}
+
+.form-title {
+  font-size: 22px;
+  font-weight: 600;
+  font-family: 'Gilroy', sans-serif;
+  color: #000000cc;
+  text-align: center;
+  margin: 0 0 25px 0;
+}
+
+.ambassador-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid #4d4d4d8e;
+  font-size: 16px;
+  font-family: 'Gilroy', sans-serif;
+  transition: 0.3s;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.form-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(246, 98, 151, 0.1);
+}
+
+
+
+.submit-btn {
+  background-color: #199c68;
+  color: #ffffff;
+  border: none;
+  padding: 16px 50px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Gilroy', sans-serif;
+  cursor: pointer;
+  transition: 0.3s;
+  letter-spacing: 1px;
+  width: 300px;
+  margin: 5px auto 0 auto;      /* ← центрирование */
+  display: block;               /* ← чтобы margin: auto работал */
+}
+
+
+
+
+.form-hint {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Gilroy', sans-serif;
+  color: #888888;
+  text-align: center;
+  margin: 20px 0 0 0;
+  line-height: 1.5;
+}
+
+.checkbox-wrapper {
+  margin-top: 20px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  font-family: 'Gilroy', sans-serif;
+  font-size: 14px;
+  color: #555555;
+  line-height: 1.5;
+}
+
+.checkbox-input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: #555555;
+  cursor: pointer;
+}
+
+.checkbox-text {
+  font-size: 14px;
+  color: #555555;
+}
+
+@media (max-width: 768px) {
+  .programs-content {
+    padding: 25px 20px;
+    border-radius: 20px;
+  }
+  .programs-title {
+    font-size: 26px;
+  }
+  .form-wrapper {
+    padding: 20px 15px;
+  }
+  .form-title {
+    font-size: 18px;
+  }
+  .submit-btn {
+    padding: 14px 30px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .programs-page {
+    padding: 20px 0;
+  }
+  .programs-content {
+    padding: 20px 15px;
+    border-radius: 16px;
+  }
+  .programs-title {
+    font-size: 22px;
+  }
+  .programs-description {
+    font-size: 15px;
+  }
+  .form-wrapper {
+    padding: 15px 12px;
+    border-radius: 16px;
+  }
+  .form-title {
+    font-size: 16px;
+  }
+  .form-input {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  .submit-btn {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+  .checkbox-text {
+    font-size: 13px;
+  }
+}

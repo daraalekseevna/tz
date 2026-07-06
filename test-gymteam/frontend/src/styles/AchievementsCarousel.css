@@ -1,0 +1,231 @@
+/* src/styles/AchievementsCarousel.css */
+
+/* ===== ОСНОВНАЯ СЕКЦИЯ ===== */
+.achievements-carousel-section {
+  padding: 60px 0;
+  background-color: #f3f3f3;
+  text-align: center;
+}
+
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* ===== ЗАГОЛОВОК ===== */
+.carousel-title {
+  font-size: 38px;
+  line-height: 1.2;
+  font-weight: 300;
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  color: #000000;
+  margin: 20px 0 20px 0;
+}
+
+.carousel-title .highlight {
+  font-weight: 700;
+  color: #F66297;
+}
+
+/* ===== ОПИСАНИЕ ===== */
+.carousel-description {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.2;
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  color: #000000;
+  margin: 0 0 40px 0;
+}
+
+/* ===== БЕЛЫЙ ПРЯМОУГОЛЬНИК ===== */
+.white-box {
+  border-radius: 30px;
+  padding: 15px;
+  background: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: left;
+  color: #000000;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ===== ТЕКСТ (СВЕРХУ) ===== */
+.text-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 15px;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;           /* ← ТЕКСТ И ИКОНКА ПО ЦЕНТРУ */
+  gap: 14px;
+}
+
+.list-icon {
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+}
+
+/* ===== ТЕКСТ ПУНКТОВ СПИСКА ===== */
+.list-text {
+  display: block;
+  font-size: 20px;
+  font-weight: 300;
+  color: #000000;
+  text-align: left;
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ===== ИКОНКИ (СНИЗУ) — ГОРИЗОНТАЛЬНЫЙ СКРОЛЛ ===== */
+.image-scroll-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px 5px;
+  scroll-behavior: smooth;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
+
+.image-scroll:active {
+  cursor: grabbing;
+}
+
+.image-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.image-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.image-scroll::-webkit-scrollbar-thumb {
+  background: #F66297;
+  border-radius: 10px;
+}
+
+.image-scroll::-webkit-scrollbar-thumb:hover {
+  background: #e04a7a;
+}
+
+.scroll-icon {
+  width: 353px;
+  height: 353px;
+  object-fit: cover;
+  border-radius: 30px;
+  flex-shrink: 0;
+  transition: 0.3s;
+}
+
+/* ===== ТЕКСТ + 21.png (СТРЕЛКА) ===== */
+.scroll-hint-text {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #F66297;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 15px;
+  gap: 5px;
+  letter-spacing: 0.5px;
+}
+
+.scroll-hint-image {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+}
+
+/* ============================================ */
+/* ===== АДАПТИВНОСТЬ ===== */
+/* ============================================ */
+
+@media (max-width: 768px) {
+  .carousel-title {
+    font-size: 24px;
+  }
+  .carousel-description {
+    font-size: 16px;
+  }
+  .white-box {
+    padding: 20px 15px;
+    border-radius: 20px;
+  }
+  .list-text {
+    font-size: 15px;
+  }
+  .list-icon {
+    width: 24px;
+    height: 24px;
+  }
+  .scroll-icon {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+  }
+  .image-scroll {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .achievements-carousel-section {
+    padding: 40px 0;
+  }
+  .carousel-title {
+    font-size: 20px;
+  }
+  .carousel-description {
+    font-size: 14px;
+  }
+  .white-box {
+    padding: 15px 12px;
+    border-radius: 16px;
+  }
+  .list-text {
+    font-size: 14px;
+  }
+  .list-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .list-item {
+    gap: 10px;
+  }
+  .scroll-icon {
+    width: 150px;
+    height: 150px;
+    border-radius: 16px;
+  }
+  .image-scroll {
+    gap: 10px;
+  }
+  .scroll-hint-text {
+    font-size: 11px;
+  }
+  .scroll-hint-image {
+    width: 12px;
+    height: 12px;
+  }
+}

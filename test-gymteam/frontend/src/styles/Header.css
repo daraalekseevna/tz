@@ -1,0 +1,186 @@
+/* src/styles/Header.css */
+
+/* ===== СЕКЦИЯ ===== */
+.header-section {
+  padding: 20px 0;
+  background-color: #ffffff;
+}
+
+/* ===== КОНТЕЙНЕР ===== */
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* ===== FLEX-СТРОКА ===== */
+.flex-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* ===== ЛЕВАЯ КОЛОНКА ===== */
+.text-col {
+  flex: 1 1 500px;
+  max-width: 600px;
+  padding: 0 15px;
+  flex-direction: column;
+  display: flex;
+}
+
+/* ===== ПРАВАЯ КОЛОНКА ===== */
+.img-col {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* ===== ЗАГОЛОВОК (с увеличенным расстоянием между буквами) ===== */
+.title {
+  font-size: 36px;
+  line-height: 1.3;
+  color: #F66297;
+  font-weight: 600;
+font-family: 'Gilroy', Roboto, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;          /* ← добавили расстояние между буквами */
+  margin: 0 0 20px 0;
+}
+
+.subtitle {
+  font-size: 28px;
+  line-height: 1.3;
+  color: #F66297;
+  font-weight: 300;
+  font-family: 'Roboto', 'Gilroy', 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 0.5px;
+  margin: 0 0 20px 0;
+}
+
+/* ===== ОПИСАНИЕ ===== */
+.desc {
+  font-size: 19px;
+  line-height: 1.6;
+  color: #000000;
+  font-weight: 400;
+font-family: 'Gilroy', Roboto, sans-serif;
+  letter-spacing: 0.3px;        /* ← добавили небольшое расстояние */
+  margin: 60px 0 60px 0;
+}
+
+/* ===== КНОПКА (КОРОТКАЯ, ПО ТЕКСТУ) ===== */
+.btn {
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  background-color: #F66297;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 500;
+font-family: 'Roboto', Gilroy, sans-serif;
+  border-radius: 200px;
+  padding: 34px 35px;          /* ← уменьшили отступы */
+  min-height: auto;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 1;
+  outline: none;
+  width: 350px;                /* ← НЕ растягивается */
+  white-space: nowrap;        /* ← текст в одну строку */
+  box-sizing: border-box;
+}
+
+.btn:hover {
+  background-color: #e04a7a;
+  transform: scale(1.02);
+}
+/* ===== VPN ===== */
+.vpn {
+  font-size: 23Wpx;
+  color: #999999;
+  font-weight: 400;
+  font-family: 'Gilroy', 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 0.5px;
+  margin: 10px;
+}
+
+/* ===== КАРТИНКА ===== */
+.hero-img {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  display: block;
+}
+
+/* ============================================ */
+/* ===== АДАПТИВНОСТЬ ===== */
+/* ============================================ */
+
+@media (max-width: 768px) {
+  .flex-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .text-col {
+    max-width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .img-col {
+    justify-content: center;
+  }
+
+  .title {
+    font-size: 28px;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    font-size: 18px;
+  }
+  .desc {
+    font-size: 16px;
+  }
+  .btn {
+    padding: 14px 40px;
+    font-size: 15px;
+  }
+  .hero-img {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-section {
+    padding: 40px 0;
+  }
+  .title {
+    font-size: 22px;
+    letter-spacing: 1px;
+  }
+  .subtitle {
+    font-size: 16px;
+  }
+  .desc {
+    font-size: 14px;
+  }
+  .btn {
+    padding: 12px 30px;
+    font-size: 13px;
+  }
+  .hero-img {
+    max-width: 280px;
+  }
+  .vpn {
+    font-size: 12px;
+  }
+}
