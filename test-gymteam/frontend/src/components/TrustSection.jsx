@@ -1,8 +1,28 @@
 // src/components/TrustSection.jsx
-import React from 'react';
+import React, { useRef } from 'react';
 import '../styles/TrustSection.css';
 
 function TrustSection() {
+  // Создаём ссылку на блок с формой (ProgramsSection)
+  const programsRef = useRef(null);
+
+  // Функция для плавной прокрутки к ProgramsSection с большим отступом
+  const scrollToPrograms = () => {
+    if (programsRef.current) {
+      // Получаем позицию якоря
+      const rect = programsRef.current.getBoundingClientRect();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Смещаем прокрутку на 500px ВНИЗ от якоря
+      const targetPosition = rect.top + scrollTop + 100; // ← +500px вниз
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section className="trust-section">
       <div className="container">
@@ -23,7 +43,6 @@ function TrustSection() {
                 className="trust-img" 
                 style={{ backgroundImage: `url(/images/0.png)` }}
               />
-              
             </div>
 
             <div className="trust-card">
@@ -31,7 +50,6 @@ function TrustSection() {
                 className="trust-img" 
                 style={{ backgroundImage: `url(/images/01.png)` }}
               />
-
             </div>
 
             <div className="trust-card">
@@ -39,7 +57,6 @@ function TrustSection() {
                 className="trust-img" 
                 style={{ backgroundImage: `url(/images/02.png)` }}
               />
-           
             </div>
 
             <div className="trust-card">
@@ -49,10 +66,15 @@ function TrustSection() {
               />
             </div>
           </div>
-
-          <button className="trust-button">ВЕРНУТЬ ФОРМУ</button>
         </div>
+
+        <button className="trust-button" onClick={scrollToPrograms}>
+          ВЕРНУТЬ ФОРМУ
+        </button>
       </div>
+
+      {/* Якорь для прокрутки */}
+      <div ref={programsRef}></div>
     </section>
   );
 }

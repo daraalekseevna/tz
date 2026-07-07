@@ -1,0 +1,227 @@
+/* src/styles/ProgramsSection.css */
+
+/* ===== ОСНОВНАЯ СЕКЦИЯ ===== */
+.programs-section {
+  padding: 60px 0;
+  background-color: #f3f3f3;
+  text-align: center;
+}
+
+.programs-section .container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* ===== ЗАГОЛОВОК ===== */
+.programs-section-title {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.3;
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  color: #000000;
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+/* ===== СЕТКА КАРТОЧЕК ===== */
+.programs-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ===== КАРТОЧКА ===== */
+.program-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  text-align: left;
+  min-height: 180px;
+  border: 2px solid transparent;
+}
+
+.program-card-flagman {
+  border: 2px solid #F66297;
+  box-shadow: 0 2px 12px rgba(246, 98, 151, 0.15);
+}
+
+/* ===== КАРТИНКА ===== */
+.program-image {
+  width: 45%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ===== ТЕКСТ ===== */
+.program-content {
+  width: 55%;
+  padding: 14px 18px 14px 18px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* ===== ВЕРХНЯЯ ЧАСТЬ: ФЛАГ + НАЗВАНИЕ ===== */
+.program-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  /* ← выравниваем по левому краю */
+  width: 100%;
+}
+
+/* ===== ФЛАГ / МАРАФОН / КУРС ===== */
+.program-flag {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 550;
+  font-family: 'Roboto', sans-serif;
+  color: #F66297;
+  border-radius: 100px;
+  padding: 10px 20px;
+ background: transparent;
+  /* убираем width: fit-content */
+}
+
+.program-flag-flagman {
+  background: #F6629730;
+  color: #F66297;
+}
+
+/* ===== НАЗВАНИЕ ===== */
+.program-title {
+  font-size: 20px;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  color: #000000;
+  margin: 15px 0 15px 0;
+  line-height: 1.3;
+}
+
+/* ===== ОПИСАНИЕ ===== */
+.program-desc {
+  color: #555555;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0 0 10px 0;
+  font-family: 'Roboto', sans-serif;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* ===== КНОПКА "ПОДРОБНЕЕ" ===== */
+.program-link {
+  display: inline-block;
+  background: #F66297;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 200;
+  padding: 15px 30px;
+  border-radius: 100px;
+  text-decoration: none;
+  width: fit-content;
+  font-family: 'Roboto', sans-serif;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+  align-self: flex-start;
+}
+
+.program-link:hover {
+  background: #e04a7a;
+}
+
+/* ============================================ */
+/* ===== АДАПТИВНОСТЬ ===== */
+/* ============================================ */
+
+@media (max-width: 768px) {
+  .programs-section-title {
+    font-size: 26px;
+  }
+  .programs-grid {
+    max-width: 450px;
+  }
+  .program-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: 16px;
+    min-height: auto;
+  }
+  .program-image {
+    width: 100%;
+    height: 160px;
+  }
+  .program-content {
+    width: 100%;
+    align-items: center;
+    padding: 16px 16px 18px 16px;
+  }
+  .program-top {
+    align-items: center;
+  }
+  .program-flag {
+    font-size: 13px;
+    padding: 5px 16px;
+  }
+  .program-link {
+    align-self: center;
+  }
+  .program-title {
+    font-size: 17px;
+  }
+  .program-desc {
+    font-size: 15px;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .programs-section {
+    padding: 40px 0;
+  }
+  .programs-section-title {
+    font-size: 22px;
+  }
+  .programs-grid {
+    max-width: 100%;
+  }
+  .program-card {
+    border-radius: 14px;
+  }
+  .program-card-flagman {
+    border-width: 2px;
+  }
+  .program-image {
+    height: 130px;
+  }
+  .program-content {
+    padding: 14px 14px 16px 14px;
+  }
+  .program-title {
+    font-size: 16px;
+  }
+  .program-desc {
+    font-size: 14px;
+  }
+  .program-flag {
+    font-size: 12px;
+    padding: 4px 14px;
+  }
+  .program-link {
+    font-size: 13px;
+    padding: 6px 16px;
+  }
+}
