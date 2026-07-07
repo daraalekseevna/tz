@@ -102,6 +102,7 @@
   margin: 10px 0;
 }
 
+/* ===== КАРТИНКА (ДЕСКТОП) ===== */
 .hero-img {
   max-width: 500px;
   width: 100%;
@@ -110,7 +111,26 @@
   display: block;
 }
 
+/* ===== КАРТИНКА (МОБИЛЬНАЯ — СКРЫТА ПО УМОЛЧАНИЮ) ===== */
+.mobile-img-wrapper {
+  display: none;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.hero-img-mobile {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 20px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ============================================ */
 /* ===== АДАПТИВНОСТЬ ===== */
+/* ============================================ */
+
 @media (max-width: 1024px) {
   .flex-row {
     gap: 30px;
@@ -173,6 +193,17 @@
   .header-section {
     padding: 30px 0;
   }
+
+  /* ===== СКРЫВАЕМ КАРТИНКУ СПРАВА ===== */
+  .img-col {
+    display: none;
+  }
+
+  /* ===== ПОКАЗЫВАЕМ КАРТИНКУ МЕЖДУ ТЕКСТОМ ===== */
+  .mobile-img-wrapper {
+    display: block;
+  }
+
   .title {
     font-size: 22px;
     letter-spacing: 1px;
@@ -191,7 +222,7 @@
     max-width: 280px;
     white-space: normal;
   }
-  .hero-img {
+  .hero-img-mobile {
     max-width: 280px;
   }
   .vpn {
@@ -213,40 +244,7 @@
     padding: 12px 20px;
     font-size: 13px;
   }
-  .hero-img {
-    max-width: 220px;
-  }
-}
-/* ===== КАРТИНКА ===== */
-.hero-img {
-  max-width: 500px;
-  width: 100%;
-  height: auto;
-  border-radius: 20px;
-  display: block;
-}
-
-/* ===== АДАПТИВНОСТЬ ===== */
-@media (max-width: 1024px) {
-  .hero-img {
-    max-width: 400px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-img {
-    max-width: 350px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-img {
-    max-width: 280px;
-  }
-}
-
-@media (max-width: 360px) {
-  .hero-img {
+  .hero-img-mobile {
     max-width: 220px;
   }
 }

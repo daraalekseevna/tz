@@ -1,13 +1,13 @@
 // src/components/Header.jsx
 import React from 'react';
-import { useNavigate } from 'react-router-dom';  // ← импортируем хук
+import { useNavigate } from 'react-router-dom';
 import '../styles/Header.css';
 
 function Header() {
-  const navigate = useNavigate();  // ← хук для навигации
+  const navigate = useNavigate();
 
   const handleChooseProgram = () => {
-    navigate('/programs');  // ← перенаправляем на страницу /programs
+    navigate('/programs');
   };
 
   return (
@@ -27,6 +27,16 @@ function Header() {
               <br />
               с пользой для здоровья
             </p>
+
+            {/* ===== КАРТИНКА НА МОБИЛКЕ (ПОЯВЛЯЕТСЯ ТОЛЬКО НА МАЛЕНЬКИХ ЭКРАНАХ) ===== */}
+            <div className="mobile-img-wrapper">
+              <img
+                src="/images/katya.png"
+                alt="Катя Усманова"
+                className="hero-img-mobile"
+              />
+            </div>
+
             <p className="desc">
               Похудеть, подтянуть попу и живот, набрать форму
               <br />
