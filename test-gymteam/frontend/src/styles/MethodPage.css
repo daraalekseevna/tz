@@ -34,7 +34,7 @@
   transform: translateX(-4px);
 }
 
-/* ===== ГЕРОЙ-БЛОК ===== */
+/* ===== ГЕРОЙ-БЛОК С КАРТИНКОЙ ===== */
 .method-hero {
   position: relative;
   width: 100%;
@@ -68,6 +68,7 @@
   width: 100%;
   margin: 0;
   margin-left: 15%;
+  min-height: 100vh;
 }
 
 /* ===== БЕЙДЖ ===== */
@@ -204,7 +205,7 @@
   padding: 0 1px;
 }
 
-/* ===== БЕГУЩАЯ СТРОКА (СЛЕВА → НАПРАВО) ===== */
+/* ===== БЕГУЩАЯ СТРОКА ===== */
 .marquee-wrapper {
   background-color: #F95B80;
   padding: 12px 0;
@@ -254,7 +255,6 @@
   padding: 0 15px;
 }
 
-/* ===== ТЕКСТ НАД БЕЛЫМ ПРЯМОУГОЛЬНИКОМ ===== */
 .changes-title {
   font-size: 26px;
   font-weight: 400;
@@ -277,7 +277,6 @@
   margin: 0 0 20px 0;
 }
 
-/* ===== БЕЛЫЙ ПРЯМОУГОЛЬНИК (ИХ СТИЛИ) ===== */
 .white-box {
   border-radius: 30px;
   padding: 15px;
@@ -289,7 +288,6 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-/* ===== СПИСОК (ИХ СТИЛИ) ===== */
 .changes-list {
   display: flex;
   flex-direction: column;
@@ -335,7 +333,6 @@
   margin: 0;
 }
 
-/* ===== КАРТИНКА 10.png (ИХ СТИЛИ) ===== */
 .changes-bottom-image {
   display: block;
   width: 100%;
@@ -345,7 +342,6 @@
   object-fit: cover;
 }
 
-/* ===== КНОПКА (СНАРУЖИ БЕЛОГО БЛОКА) ===== */
 .changes-btn {
   background-color: #F95B80;
   color: #ffffff;
@@ -365,7 +361,10 @@
   text-align: center;
 }
 
-/* ===== РОЗОВАЯ КАРТА НА ВСЮ ШИРИНУ С ПРАЙСОМ ===== */
+/* ============================================ */
+/* ===== РОЗОВАЯ КАРТА С ПРАЙСОМ ===== */
+/* ============================================ */
+
 .pricing-full-card {
   width: 100vw;
   margin-left: calc(-50vw + 50%);
@@ -433,7 +432,6 @@
   margin-top: 4px;
 }
 
-/* ===== КАРТОЧКИ ОДНОЙ ШИРИНЫ, РАЗНОЙ ДЛИНЫ ===== */
 .pricing-grid-main {
   display: flex;
   justify-content: center;
@@ -463,7 +461,6 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
-/* ===== ПОЛОСКА НА ШАПКЕ КАРТОЧКИ ===== */
 .pricing-card-main .card-header {
   position: absolute;
   top: 0;
@@ -474,20 +471,16 @@
   border-radius: 30px 30px 0 0;
 }
 
-/* ===== РАЗНАЯ ДЛИНА ===== */
 .card-small {
   min-height: 350px;
 }
-
 .card-medium {
   min-height: 420px;
 }
-
 .card-large {
   min-height: 520px;
 }
 
-/* ===== ПОПУЛЯРНАЯ КАРТОЧКА ===== */
 .pricing-card-main.popular-main {
   border: 1px solid #F95B80;
   box-shadow: 0 0 20px #F95B8050 inset;
@@ -610,14 +603,21 @@
 /* ===== АДАПТИВНОСТЬ ===== */
 /* ============================================ */
 
+@media (max-width: 1200px) {
+  .method-bg-image {
+    object-position: center;
+  }
+}
+
 @media (max-width: 992px) {
   .method-hero {
-    min-height: 80vh;
+    min-height: 90vh;
   }
   .method-bg-image {
-    min-height: 80vh;
+    min-height: 90vh;
   }
   .method-overlay {
+    min-height: 90vh;
     padding: 60px 40px;
     margin-left: 10%;
   }
@@ -641,15 +641,18 @@
     padding: 6px 14px;
   }
   .method-hero {
-    min-height: 70vh;
+    min-height: 85vh;
   }
   .method-bg-image {
-    min-height: 70vh;
+    min-height: 85vh;
+    object-position: 60% center;
   }
   .method-overlay {
+    min-height: 85vh;
     padding: 40px 25px;
     margin-left: 5%;
     text-align: center;
+    align-items: center;
   }
   .method-title {
     font-size: 30px;
@@ -659,9 +662,14 @@
     font-size: 15px;
     max-width: 100%;
     text-align: center;
+    margin: 30px 0 30px 0;
   }
   .method-btn {
     align-self: center;
+    padding: 18px 40px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 300px;
   }
   .method-badge {
     font-size: 14px;
@@ -669,28 +677,31 @@
   }
   .method-vpn {
     text-align: center;
+    font-size: 12px;
   }
   .method-timer {
     text-align: center;
+    max-width: 100%;
   }
   .timer-label {
     text-align: center;
+    font-size: 17px;
   }
   .timer {
     justify-content: center;
   }
   .timer-item {
-    padding: 10px 15px;
-    min-width: 60px;
+    padding: 8px 12px;
+    min-width: 50px;
   }
   .timer-value {
-    font-size: 28px;
+    font-size: 34px;
   }
   .timer-separator {
     font-size: 24px;
   }
-  .method-vpn {
-    font-size: 12px;
+  .timer-label-text {
+    font-size: 10px;
   }
   .marquee span {
     font-size: 14px;
@@ -706,6 +717,7 @@
   }
   .changes-title {
     font-size: 20px;
+    margin: 20px 0 20px 0;
   }
   .changes-subtitle {
     font-size: 14px;
@@ -734,9 +746,19 @@
   }
   .pricing-full-card {
     padding: 30px 15px;
+    margin-top: 60px;
   }
   .pricing-title-main {
     font-size: 24px;
+  }
+  .pricing-subtitle-main {
+    font-size: 15px;
+  }
+  .pricing-timer-mini {
+    font-size: 16px;
+  }
+  .pricing-timer-mini-value {
+    font-size: 20px;
   }
   .pricing-grid-main {
     flex-direction: column;
@@ -761,6 +783,70 @@
   }
 }
 
+@media (max-width: 600px) {
+  .method-hero {
+    min-height: 80vh;
+  }
+  .method-bg-image {
+    min-height: 80vh;
+    object-position: 65% center;
+  }
+  .method-overlay {
+    min-height: 80vh;
+    padding: 30px 20px;
+    margin-left: 0;
+    text-align: center;
+    align-items: center;
+  }
+  .method-title {
+    font-size: 26px;
+  }
+  .method-badge {
+    font-size: 13px;
+  }
+  .method-desc {
+    font-size: 14px;
+    margin: 20px 0 20px 0;
+  }
+  .method-btn {
+    padding: 16px 30px;
+    font-size: 15px;
+    max-width: 280px;
+  }
+  .method-vpn {
+    font-size: 12px;
+  }
+  .timer-value {
+    font-size: 30px;
+  }
+  .timer-item {
+    padding: 6px 10px;
+    min-width: 40px;
+  }
+  .timer-label-text {
+    font-size: 10px;
+  }
+  .timer-separator {
+    font-size: 20px;
+  }
+  .pricing-card-main {
+    max-width: 280px;
+  }
+  .card-small {
+    min-height: 260px;
+  }
+  .card-medium {
+    min-height: 320px;
+  }
+  .card-large {
+    min-height: 380px;
+  }
+}
+
+/* ============================================ */
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ (до 480px) ===== */
+/* ============================================ */
+
 @media (max-width: 480px) {
   .back-link {
     top: 15px;
@@ -768,63 +854,167 @@
     font-size: 12px;
     padding: 4px 12px;
   }
+
   .method-hero {
-    min-height: 60vh;
+    min-height: 30vh;
   }
+
   .method-bg-image {
-    min-height: 60vh;
+    min-height: 30vh;
+    object-position: 70% center;
   }
+
   .method-overlay {
+    min-height: 30vh;
     padding: 30px 16px;
     margin-left: 0%;
     text-align: center;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
   }
-  .method-title {
-    font-size: 26px;
-    text-align: center;
-  }
-  .method-desc {
-    font-size: 14px;
-    text-align: center;
-  }
-  .method-btn {
-    padding: 12px 20px;
-    font-size: 14px;
+
+  /* ===== ВЕРХНЯЯ ЧАСТЬ ===== */
+  .method-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    align-self: center;
+    margin-bottom: 20px;
   }
+
+  /* ===== НИЖНЯЯ ЧАСТЬ ===== */
+  .method-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 10px;
+  }
+
+  /* ===== БЕЙДЖ ===== */
   .method-badge {
     font-size: 12px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    color: #F95B80;
+    margin-bottom: 10px;
+    line-height: 1.3;
     text-align: center;
+    max-width: 100%;
   }
-  .method-vpn {
-    text-align: center;
-  }
-  .method-timer {
-    text-align: center;
-  }
-  .timer-label {
-    text-align: center;
-  }
-  .timer {
-    justify-content: center;
-  }
-  .timer-item {
-    padding: 8px 12px;
-    min-width: 50px;
-  }
-  .timer-value {
+
+  /* ===== ЗАГОЛОВОК ===== */
+  .method-title {
     font-size: 22px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    line-height: 1.1;
+    margin: 0 0 10px 0;
+    text-align: center;
   }
-  .timer-label-text {
-    font-size: 10px;
+
+  .method-title .pink-text {
+    color: #F95B80;
   }
-  .timer-separator {
-    font-size: 18px;
+
+  /* ===== ОПИСАНИЕ ===== */
+  .method-desc {
+    font-size: 13px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    color: #555555;
+    line-height: 1.4;
+    margin: 0 0 15px 0;
+    text-align: center;
+    max-width: 100%;
   }
+
+  .method-desc .pink-text {
+    color: #F95B80;
+    font-weight: 500;
+  }
+
+  /* ===== КНОПКА ===== */
+  .method-btn {
+    align-self: center;
+    padding: 14px 25px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 100%;
+    max-width: 240px;
+    margin-bottom: 15px;
+  }
+
+  /* ===== VPN ===== */
   .method-vpn {
     font-size: 11px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    color: #777777;
+    margin: 0 0 15px 0;
+    text-align: center;
   }
+
+  /* ===== ТАЙМЕР ===== */
+  .method-timer {
+    text-align: center;
+    max-width: 100%;
+    margin-top: 10px;
+  }
+
+  .timer-label {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    margin: 0 0 10px 0;
+    text-align: center;
+  }
+
+  .timer {
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .timer-item {
+    padding: 6px 10px;
+    min-width: 35px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .timer-value {
+    font-size: 22px;
+    font-weight: 100;
+    font-family: 'Roboto', sans-serif;
+    color: #F95B80;
+    line-height: 1;
+  }
+
+  .timer-label-text {
+    font-size: 9px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    color: #999999;
+    margin-top: 2px;
+  }
+
+  .timer-separator {
+    font-size: 16px;
+    font-weight: 500;
+    color: #F95B80;
+    padding: 0 2px;
+  }
+
+  /* ===== БЕГУЩАЯ СТРОКА ===== */
   .marquee span {
     font-size: 12px;
   }
@@ -834,15 +1024,22 @@
   .marquee-wrapper {
     padding: 6px 0;
   }
+
+  /* ===== БЛОК "С МЕТОДОМ..." ===== */
+  .changes-section {
+    padding-top: 20px;
+  }
   .changes-title {
     font-size: 18px;
+    margin: 15px 0 15px 0;
   }
   .changes-subtitle {
     font-size: 13px;
+    margin-bottom: 20px;
   }
   .white-box {
     padding: 10px 12px;
-    border-radius: 20px;
+    border-radius: 18px;
   }
   .change-item {
     gap: 10px;
@@ -867,34 +1064,128 @@
     margin: 12px auto 10px auto;
     border-radius: 14px;
   }
+
+  /* ===== ПРАЙС ===== */
   .pricing-full-card {
     padding: 20px 10px;
+    margin-top: 30px;
   }
   .pricing-title-main {
     font-size: 20px;
+  }
+  .pricing-subtitle-main {
+    font-size: 14px;
+  }
+  .pricing-timer-mini {
+    font-size: 15px;
+  }
+  .pricing-timer-mini-value {
+    font-size: 18px;
   }
   .price-main {
     font-size: 24px;
   }
   .pricing-card-main {
-    padding: 20px 16px;
+    padding: 16px 14px;
     max-width: 100%;
   }
-  .pricing-timer-mini-value {
-    font-size: 20px;
-  }
   .card-small {
-    min-height: 280px;
+    min-height: 240px;
   }
   .card-medium {
-    min-height: 330px;
+    min-height: 280px;
   }
   .card-large {
-    min-height: 400px;
+    min-height: 340px;
   }
   .pricing-card-main .badge-main {
     top: 8px;
     font-size: 10px;
     padding: 2px 12px;
+  }
+}
+
+/* ============================================ */
+/* ===== ЭКСТРА-МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 360px) ===== */
+/* ============================================ */
+
+@media (max-width: 360px) {
+  .method-hero {
+    min-height: 25vh;
+  }
+  .method-bg-image {
+    min-height: 25vh;
+    object-position: 75% center;
+  }
+  .method-overlay {
+    min-height: 25vh;
+    padding: 20px 12px;
+    padding-top: 15px;
+  }
+  .method-title {
+    font-size: 18px;
+  }
+  .method-badge {
+    font-size: 11px;
+  }
+  .method-desc {
+    font-size: 12px;
+    margin: 0 0 12px 0;
+  }
+  .method-btn {
+    padding: 12px 20px;
+    font-size: 13px;
+    max-width: 200px;
+  }
+  .timer-value {
+    font-size: 20px;
+  }
+  .timer-item {
+    padding: 4px 6px;
+    min-width: 30px;
+  }
+  .timer-separator {
+    font-size: 14px;
+  }
+  .pricing-card-main {
+    padding: 12px 10px;
+  }
+  .price-main {
+    font-size: 20px;
+  }
+  .pricing-title-main {
+    font-size: 17px;
+  }
+  .pricing-full-card {
+    padding: 16px 8px;
+  }
+  .card-small {
+    min-height: 200px;
+  }
+  .card-medium {
+    min-height: 240px;
+  }
+  .card-large {
+    min-height: 290px;
+  }
+  .changes-title {
+    font-size: 16px;
+  }
+  .changes-subtitle {
+    font-size: 12px;
+  }
+  .white-box {
+    padding: 8px 10px;
+    border-radius: 16px;
+  }
+  .change-item-title {
+    font-size: 13px;
+  }
+  .change-item-desc {
+    font-size: 12px;
+  }
+  .change-icon-img {
+    width: 20px;
+    height: 20px;
   }
 }

@@ -384,7 +384,7 @@
 /* ===== АДАПТИВНОСТЬ ===== */
 /* ============================================ */
 
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   .pricing-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 25px;
@@ -467,5 +467,49 @@
   .plan-btn {
     padding: 10px 20px;
     font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .pricing-title {
+    font-size: 20px;
+  }
+  .pricing-title-main {
+    font-size: 17px;
+  }
+  .price-main {
+    font-size: 20px;
+  }
+  .pricing-card-main {
+    padding: 16px 12px;
+  }
+  .pricing-timer-mini {
+    font-size: 15px;
+  }
+  .pricing-timer-mini-value {
+    font-size: 18px;
+  }
+  .plan-btn {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+}
+.pricing-img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .pricing-img {
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pricing-img {
+    max-width: 150px;
   }
 }

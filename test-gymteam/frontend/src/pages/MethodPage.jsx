@@ -61,52 +61,58 @@ function MethodPage() {
   return (
     <div className="method-page">
 
+      {/* ===== ГЕРОЙ-БЛОК С КАРТИНКОЙ 000.png ===== */}
       <div className="method-hero">
         <img src="/images/000.png" alt="Метод Усмановой" className="method-bg-image" />
         
         <div className="method-overlay">
-          <p className="method-badge">
-            ХВАТИТ ИСКАТЬ СПОСОБ. ЕСТЬ ОБНОВЛЁННЫЙ <br />
-            <span className="pink-text">«МЕТОД УСМАНОВОЙ»</span>
-          </p>
-          
-          <h1 className="method-title">
-            ЗА ЛЕТО ВЕРНИТЕ <br />
-            <span className="pink-text">ЛЁГКОСТЬ, ЭНЕРГИЮ</span> <br />
-            <span className="pink-text">И ФОРМУ</span>
-          </h1>
-          
-          <p className="method-desc">
-            <span className="pink-text">Домашние тренировки с Катей и готовое питание по неделям</span><br />
-            возвращают лёгкость, подтягивают тело и наконец превращают<br />
-            спорт в чистое удовольствие.
-          </p>
-          
-          {/* КНОПКА "ПОЛУЧИТЬ МЕТОД" — ПРОКРУТКА К ПРАЙСУ */}
-          <button className="method-btn" onClick={scrollToPricing}>
-            ПОЛУЧИТЬ МЕТОД
-          </button>
-          
-          <p className="method-vpn">Для корректной работы сайта отключите VPN</p>
-          
-          <div className="method-timer">
-            <p className="timer-label">
-              <span className="pink-text">Успейте забрать тренировки со скидкой до 82%</span>
+          {/* ===== ВЕРХНЯЯ ЧАСТЬ (на картинке) ===== */}
+          <div className="method-top">
+            <p className="method-badge">
+              ХВАТИТ ИСКАТЬ СПОСОБ. ЕСТЬ ОБНОВЛЁННЫЙ <br />
+              <span className="pink-text">«МЕТОД УСМАНОВОЙ»</span>
             </p>
-            <div className="timer">
-              <div className="timer-item">
-                <span className="timer-value">{String(time.hours).padStart(2, '0')}</span>
-                <span className="timer-label-text">часов</span>
-              </div>
-              <span className="timer-separator">:</span>
-              <div className="timer-item">
-                <span className="timer-value">{String(time.minutes).padStart(2, '0')}</span>
-                <span className="timer-label-text">минут</span>
-              </div>
-              <span className="timer-separator">:</span>
-              <div className="timer-item">
-                <span className="timer-value">{String(time.seconds).padStart(2, '0')}</span>
-                <span className="timer-label-text">секунд</span>
+            
+            <h1 className="method-title">
+              ЗА ЛЕТО ВЕРНИТЕ <br />
+              <span className="pink-text">ЛЁГКОСТЬ, ЭНЕРГИЮ</span> <br />
+              <span className="pink-text">И ФОРМУ</span>
+            </h1>
+          </div>
+
+          {/* ===== НИЖНЯЯ ЧАСТЬ (тоже на картинке, с большим отступом) ===== */}
+          <div className="method-bottom">
+            <p className="method-desc">
+              <span className="pink-text">Домашние тренировки с Катей и готовое питание по неделям</span><br />
+              возвращают лёгкость, подтягивают тело и наконец превращают<br />
+              спорт в чистое удовольствие.
+            </p>
+            
+            <button className="method-btn" onClick={scrollToPricing}>
+              ПОЛУЧИТЬ МЕТОД
+            </button>
+            
+            <p className="method-vpn">Для корректной работы сайта отключите VPN</p>
+            
+            <div className="method-timer">
+              <p className="timer-label">
+                <span className="pink-text">Успейте забрать тренировки со скидкой до 82%</span>
+              </p>
+              <div className="timer">
+                <div className="timer-item">
+                  <span className="timer-value">{String(time.hours).padStart(2, '0')}</span>
+                  <span className="timer-label-text">часов</span>
+                </div>
+                <span className="timer-separator">:</span>
+                <div className="timer-item">
+                  <span className="timer-value">{String(time.minutes).padStart(2, '0')}</span>
+                  <span className="timer-label-text">минут</span>
+                </div>
+                <span className="timer-separator">:</span>
+                <div className="timer-item">
+                  <span className="timer-value">{String(time.seconds).padStart(2, '0')}</span>
+                  <span className="timer-label-text">секунд</span>
+                </div>
               </div>
             </div>
           </div>

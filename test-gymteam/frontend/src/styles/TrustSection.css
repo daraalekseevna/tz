@@ -51,7 +51,7 @@
 .trust-section .trust-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2px !important;        /* ← жёстко, переопределяет все другие стили */
+  gap: 2px;
   margin-bottom: 30px;
 }
 
@@ -111,9 +111,21 @@
   margin-top: 10px;
 }
 
-
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 1024px) {
+  .trust-section .trust-img {
+    width: 200px;
+    height: 200px;
+  }
+  .trust-section .trust-white-box {
+    max-width: 100%;
+  }
+}
 
 @media (max-width: 768px) {
+  .trust-section {
+    padding: 40px 0;
+  }
   .trust-section .trust-title {
     font-size: 28px;
   }
@@ -135,12 +147,13 @@
   .trust-section .trust-button {
     padding: 14px 40px;
     font-size: 16px;
+    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .trust-section {
-    padding: 40px 0;
+    padding: 30px 0;
   }
   .trust-section .trust-title {
     font-size: 22px;
@@ -169,6 +182,380 @@
   .trust-section .trust-button {
     padding: 12px 30px;
     font-size: 14px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .trust-section .trust-title {
+    font-size: 18px;
+  }
+  .trust-section .trust-stats {
+    font-size: 13px;
+  }
+  .trust-section .trust-img {
+    height: 150px;
+  }
+  .trust-section .trust-card-title {
+    font-size: 14px;
+  }
+  .trust-section .trust-card-desc {
+    font-size: 12px;
+  }
+  .trust-section .trust-button {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}
+/* ===== КАРТИНКА ===== */
+.trust-section .trust-img {
+  width: 250px;
+  height: 250px;
+  border-radius: 30px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding: 15px;
+  display: flex;
+  align-items: flex-end;
+  margin: 0 auto;
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 1024px) {
+  .trust-section .trust-img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .trust-section .trust-img {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .trust-section .trust-img {
+    height: 180px;
+    border-radius: 20px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .trust-section .trust-img {
+    height: 150px;
+  }
+}
+
+/* src/styles/TrustSection.css */
+
+.trust-section {
+  padding: 60px 0;
+  background-color: #f3f3f3;
+  text-align: center;
+}
+
+.trust-section .container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.trust-section .trust-title {
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1.3;
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  color: #000000;
+  margin: 0 0 40px 0;
+}
+
+.trust-section .trust-title .highlight {
+  color: #F66297;
+  font-weight: 300;
+}
+
+.trust-section .trust-white-box {
+  font-family: 'Gilroy', sans-serif;
+  color: #000000;
+  background: #ffffff;
+  border-radius: 30px;
+  padding: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.trust-section .trust-stats {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  font-family: 'Gilroy', sans-serif;
+  color: #000000;
+}
+
+.trust-section .trust-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  margin-bottom: 30px;
+}
+
+.trust-section .trust-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 15px;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.trust-section .trust-card:hover {
+  transform: translateY(-4px);
+}
+
+.trust-section .trust-img {
+  width: 250px;
+  height: 250px;
+  border-radius: 30px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding: 15px;
+  display: flex;
+  align-items: flex-end;
+  margin: 0 auto;
+}
+
+.trust-section .trust-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Gilroy', sans-serif;
+  color: #000000;
+  margin: 12px 0 6px 0;
+}
+
+.trust-section .trust-card-desc {
+  font-size: 15px;
+  font-weight: 400;
+  font-family: 'Gilroy', sans-serif;
+  color: #666666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.trust-section .trust-button {
+  background-color: #F66297;
+  color: #ffffff;
+  border: none;
+  padding: 16px 50px;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Gilroy', sans-serif;
+  border-radius: 50px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+
+/* ============================================ */
+/* ===== АДАПТИВНОСТЬ ===== */
+/* ============================================ */
+
+/* Планшеты и маленькие ноутбуки */
+@media (max-width: 1024px) {
+  .trust-section .trust-img {
+    width: 200px;
+    height: 200px;
+  }
+  .trust-section .trust-white-box {
+    max-width: 100%;
+  }
+  .trust-section .trust-title {
+    font-size: 32px;
+  }
+}
+
+/* Планшеты вертикально */
+@media (max-width: 768px) {
+  .trust-section {
+    padding: 40px 0;
+  }
+  .trust-section .trust-title {
+    font-size: 28px;
+    margin: 0 0 30px 0;
+  }
+  .trust-section .trust-white-box {
+    padding: 15px 12px;
+    border-radius: 20px;
+  }
+  .trust-section .trust-stats {
+    font-size: 16px;
+  }
+  .trust-section .trust-grid {
+    grid-template-columns: repeat(2, 1fr); /* ← 2 колонки на планшетах */
+    gap: 10px;
+  }
+  .trust-section .trust-img {
+    width: 100%;
+    height: 180px;
+    border-radius: 20px;
+    padding: 10px;
+  }
+  .trust-section .trust-card {
+    padding: 12px;
+    border-radius: 16px;
+  }
+  .trust-section .trust-card-title {
+    font-size: 16px;
+  }
+  .trust-section .trust-card-desc {
+    font-size: 14px;
+  }
+  .trust-section .trust-button {
+    padding: 14px 40px;
+    font-size: 16px;
+    width: 100%;
+  }
+}
+
+/* Большие телефоны */
+@media (max-width: 600px) {
+  .trust-section {
+    padding: 30px 0;
+  }
+  .trust-section .trust-title {
+    font-size: 24px;
+    margin: 0 0 20px 0;
+  }
+  .trust-section .trust-white-box {
+    padding: 12px 10px;
+    border-radius: 16px;
+  }
+  .trust-section .trust-stats {
+    font-size: 15px;
+  }
+  .trust-section .trust-grid {
+    grid-template-columns: 1fr 1fr; /* ← 2 колонки */
+    gap: 8px;
+  }
+  .trust-section .trust-img {
+    height: 150px;
+    border-radius: 16px;
+    padding: 8px;
+  }
+  .trust-section .trust-card {
+    padding: 10px;
+    border-radius: 14px;
+  }
+  .trust-section .trust-card-title {
+    font-size: 14px;
+    margin: 8px 0 4px 0;
+  }
+  .trust-section .trust-card-desc {
+    font-size: 13px;
+  }
+  .trust-section .trust-button {
+    padding: 12px 30px;
+    font-size: 15px;
+    width: 100%;
+  }
+}
+
+/* Маленькие телефоны */
+@media (max-width: 480px) {
+  .trust-section {
+    padding: 25px 0;
+  }
+  .trust-section .trust-title {
+    font-size: 22px;
+    margin: 0 0 15px 0;
+  }
+  .trust-section .trust-white-box {
+    padding: 10px 8px;
+    border-radius: 14px;
+  }
+  .trust-section .trust-stats {
+    font-size: 14px;
+  }
+  .trust-section .trust-grid {
+    grid-template-columns: 1fr 1fr; /* ← 2 колонки */
+    gap: 6px;
+  }
+  .trust-section .trust-img {
+    height: 130px;
+    border-radius: 14px;
+    padding: 6px;
+  }
+  .trust-section .trust-card {
+    padding: 8px;
+    border-radius: 12px;
+  }
+  .trust-section .trust-card-title {
+    font-size: 13px;
+    margin: 6px 0 3px 0;
+  }
+  .trust-section .trust-card-desc {
+    font-size: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .trust-section .trust-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    width: 100%;
+    border-radius: 40px;
+    margin-top: 5px;
+  }
+}
+
+/* Экстра-маленькие телефоны */
+@media (max-width: 360px) {
+  .trust-section {
+    padding: 20px 0;
+  }
+  .trust-section .trust-title {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+  }
+  .trust-section .trust-white-box {
+    padding: 8px 6px;
+    border-radius: 12px;
+  }
+  .trust-section .trust-stats {
+    font-size: 13px;
+  }
+  .trust-section .trust-grid {
+    grid-template-columns: 1fr 1fr; /* ← 2 колонки */
+    gap: 4px;
+  }
+  .trust-section .trust-img {
+    height: 100px;
+    border-radius: 12px;
+    padding: 4px;
+  }
+  .trust-section .trust-card {
+    padding: 6px;
+    border-radius: 10px;
+  }
+  .trust-section .trust-card-title {
+    font-size: 12px;
+    margin: 4px 0 2px 0;
+  }
+  .trust-section .trust-card-desc {
+    font-size: 11px;
+    -webkit-line-clamp: 1;
+  }
+  .trust-section .trust-button {
+    padding: 8px 16px;
+    font-size: 13px;
     width: 100%;
   }
 }
