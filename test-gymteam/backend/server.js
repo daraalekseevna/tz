@@ -12,13 +12,14 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// ===== ПОДКЛЮЧЕНИЕ К POSTGRESQL =====
+// ===== ПОДКЛЮЧЕНИЕ К POSTGRESQL (с принудительным IPv4) =====
 const pool = new Pool({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  host: process.env.DB_HOST || 'db.oxjgctdrzraiwsbpxhdp.supabase.co',
+  port: process.env.DB_PORT || 5432,
+  user: process.env.DB_USER || 'postgres',
+  password: process.env.DB_PASSWORD || 'Aloconsole2004',
+  database: process.env.DB_NAME || 'postgres',
+  family: 4, // ← ПРИНУДИТЕЛЬНО ИСПОЛЬЗУЕМ IPv4
 });
 
 pool.connect((err) => {
@@ -54,8 +55,15 @@ async function sendPartnerCode(email, name, code) {
         <p style="color: #666; margin-top: 15px;">Используйте этот код для регистрации</p>
       </div>
       
-
+      <div style="background: #f0f0f0; padding: 20px; border-radius: 12px; margin-top: 20px;">
+        <p style="margin: 0; color: #555; font-size: 14px;">
+          <strong>Ваши данные:</strong><br>
+          Имя: ${name}<br>
+          Email: ${email}
+        </p>
+      </div>
       
+      <p style="text-align: center; color: #888; font-size: 14px; margin-top: 30px;">
         Если вы не регистрировались, проигнорируйте это письмо.
       </p>
     </div>
