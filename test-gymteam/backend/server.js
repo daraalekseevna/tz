@@ -121,7 +121,7 @@ app.post('/api/applications', async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: 'Заявка создана, код отправлен на почту',
+      message: 'Заявка создана',
       data: {
         email: application.email,
         name: application.name,
@@ -247,5 +247,4 @@ app.get('/healthz', (req, res) => {
 // ===== ЗАПУСК СЕРВЕРА =====
 app.listen(PORT, () => {
   console.log(`Сервер запущен на порту ${PORT}`);
-  console.log(`Отправка через: Yandex`);
 });
