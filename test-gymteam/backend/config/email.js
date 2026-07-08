@@ -1,50 +1,30 @@
 // config/email.js
-const nodemailer = require('nodemailer');
-require('dotenv').config();
+const { Resend } = require('resend');
 
-// Настройки для разных провайдеров
-const emailConfigs = {
-  gmail: {
-    service: 'gmail',
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  },
-  yandex: {
-    host: 'smtp.yandex.ru',
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  },
-  mailru: {
-    host: 'smtp.mail.ru',
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  },
-};
+// Инициализация Resend с вашим API ключом
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Получаем текущего провайдера
-const provider = process.env.EMAIL_PROVIDER || 'mailru';
-
-// Создаём transporter
-const transporter = nodemailer.createTransport(emailConfigs[provider]);
-
-// Проверка подключения
-transporter.verify((error, success) => {
-  if (error) {
-    console.error(`❌ Ошибка подключения ${provider}:`, error.message);
-  } else {
-    console.log(`✅ Email провайдер ${provider} подключен`);
-    console.log(`📧 Отправка с: ${process.env.EMAIL_USER}`);
+async function sendEmail(to, subject, htmlContent) {
+  try {
+    const { data, error } = await resend.emails.send({
+      from: 'Амбассадор <onboarding@resend.dev>', // На время теста
+      to: [to],
+      subject: subject,
+      html: htmlContent,
+    });
+    
+    if (error) {
+      console.error('❌ Ошибка Resend:', error);
+      return false;
+    }
+    
+    console.log('✅ Письмо отправлено через Resend');
+    console.log('📨 ID:', data?.id);
+    return true;
+  } catch (error) {
+    console.error('❌ Ошибка Resend:', error.message);
+    return false;
   }
-});
+}
 
-module.exports = { transporter, provider };
+module.exports = { sendEmail };

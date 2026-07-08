@@ -2,7 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
-const { transporter, provider } = require('./config/email');
+const { sendEmail } = require('./config/email');
 require('dotenv').config();
 
 const app = express();
@@ -39,47 +39,33 @@ function generatePartnerCode() {
   return code;
 }
 
-// ===== ОТПРАВКА ПИСЬМА =====
+// ===== ОТПРАВКА ПИСЬМА ЧЕРЕЗ RESEND =====
 async function sendPartnerCode(email, name, code) {
-  const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: email,
-    subject: '🎉 Ваш партнёрский код амбассадора',
-    html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 30px; background: #f9f9f9; border-radius: 20px;">
-        <h1 style="color: #F66297; text-align: center;">Поздравляем!</h1>
-        <p style="font-size: 18px; text-align: center;">Вы стали амбассадором программы</p>
-        
-        <div style="background: white; padding: 30px; border-radius: 16px; margin: 20px 0; text-align: center;">
-          <h2 style="color: #333; margin-bottom: 10px;">Ваш партнёрский код:</h2>
-          <div style="background: #F66297; color: white; font-size: 32px; font-weight: bold; padding: 20px; border-radius: 12px; letter-spacing: 4px;">
-            ${code}
-          </div>
-          <p style="color: #666; margin-top: 15px;">Используйте этот код для регистрации</p>
+  const htmlContent = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 30px; background: #f9f9f9; border-radius: 20px;">
+      <h1 style="color: #F66297; text-align: center;">Поздравляем!</h1>
+      <p style="font-size: 18px; text-align: center;">Вы стали амбассадором программы</p>
+      
+      <div style="background: white; padding: 30px; border-radius: 16px; margin: 20px 0; text-align: center;">
+        <h2 style="color: #333; margin-bottom: 10px;">Ваш партнёрский код:</h2>
+        <div style="background: #F66297; color: white; font-size: 32px; font-weight: bold; padding: 20px; border-radius: 12px; letter-spacing: 4px;">
+          ${code}
         </div>
-        
-        <div style="background: #f0f0f0; padding: 20px; border-radius: 12px; margin-top: 20px;">
-          <p style="margin: 0; color: #555; font-size: 14px;">
-            <strong>Ваши данные:</strong><br>
-            Имя: ${name}<br>
-            Email: ${email}
-          </p>
-        </div>
-        
-        <p style="text-align: center; color: #888; font-size: 14px; margin-top: 30px;">
-          Если вы не регистрировались, проигнорируйте это письмо.
-        </p>
+        <p style="color: #666; margin-top: 15px;">Используйте этот код для регистрации</p>
       </div>
-    `
-  };
+      
+
+      
+        Если вы не регистрировались, проигнорируйте это письмо.
+      </p>
+    </div>
+  `;
 
   try {
-    const info = await transporter.sendMail(mailOptions);
-    console.log(`📧 Письмо отправлено на ${email} через ${provider}`);
-    console.log(`📨 ID сообщения: ${info.messageId}`);
-    return true;
+    const result = await sendEmail(email, '🎉 Ваш партнёрский код амбассадора', htmlContent);
+    return result;
   } catch (error) {
-    console.error(`❌ Ошибка отправки письма через ${provider}:`, error.message);
+    console.error('❌ Ошибка отправки письма:', error);
     return false;
   }
 }
@@ -237,19 +223,27 @@ app.post('/api/test-email', async (req, res) => {
     const success = await sendPartnerCode(email, 'Тест', testCode);
     
     if (success) {
-      res.json({ success: true, message: 'Письмо отправлено', provider });
+      res.json({ success: true, message: 'Письмо отправлено через Resend' });
     } else {
-      res.status(500).json({ success: false, message: 'Ошибка отправки', provider });
+      res.status(500).json({ success: false, message: 'Ошибка отправки через Resend' });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
+// 8. Health Check для Render
+app.get('/healthz', (req, res) => {
+  res.status(200).json({ 
+    status: 'ok', 
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
+});
+
 // ===== ЗАПУСК СЕРВЕРА =====
 app.listen(PORT, () => {
   console.log(`🚀 Сервер запущен на порту ${PORT}`);
-  console.log(`📧 Используется провайдер: ${provider}`);
-  console.log(`📧 Отправка с: ${process.env.EMAIL_USER}`);
+  console.log(`📧 Отправка через: Resend`);
   console.log(`📊 Админ-панель: http://localhost:${PORT}/api/applications`);
 });
