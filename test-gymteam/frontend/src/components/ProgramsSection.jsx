@@ -61,11 +61,13 @@ function ProgramsSection() {
               key={program.id} 
               className={`program-card ${program.isFlagman ? 'program-card-flagman' : ''}`}
             >
-              <img 
-                src={program.image} 
-                alt={program.title}
-                className="program-image" 
-              />
+              <div className="program-image-wrapper">
+                <img 
+                  src={program.image} 
+                  alt={program.title}
+                  className="program-image" 
+                />
+              </div>
               <div className="program-content">
                 <div className="program-top">
                   <span className={`program-flag ${program.isFlagman ? 'program-flag-flagman' : ''}`}>
@@ -74,7 +76,7 @@ function ProgramsSection() {
                   <h3 className="program-title">{program.title}</h3>
                 </div>
                 <p className="program-desc">{program.description}</p>
-                <Link to="/method" className="program-link">Подробнее</Link>   {/* ← ВСЕ КНОПКИ ВЕДУТ НА /method */}
+                <Link to="/method" className="program-link">Подробнее</Link>
               </div>
             </div>
           ))}

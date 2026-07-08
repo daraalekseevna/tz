@@ -14,7 +14,7 @@ function TrustSection() {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       
       // Смещаем прокрутку на 500px ВНИЗ от якоря
-      const targetPosition = rect.top + scrollTop + 100; // ← +500px вниз
+      const targetPosition = rect.top + scrollTop + 100; // ← +100px вниз
 
       window.scrollTo({
         top: targetPosition,
@@ -68,6 +68,7 @@ function TrustSection() {
           </div>
         </div>
 
+        {/* КНОПКА ПОД БЕЛЫМ БЛОКОМ */}
         <button className="trust-button" onClick={scrollToPrograms}>
           ВЕРНУТЬ ФОРМУ
         </button>
