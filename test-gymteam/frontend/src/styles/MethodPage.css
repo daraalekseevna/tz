@@ -71,6 +71,15 @@
   min-height: 100vh;
 }
 
+/* ===== СКРЫВАЕМ ЦЕНТРАЛЬНУЮ КАРТИНКУ НА ДЕСКТОПЕ ===== */
+.method-center-image {
+  display: none;
+}
+
+.method-center-img {
+  display: none;
+}
+
 /* ===== БЕЙДЖ ===== */
 .method-badge {
   font-size: 18px;
@@ -856,27 +865,49 @@
   }
 
   .method-hero {
-    min-height: 30vh;
+    min-height: auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    background-color: #ffffff;
+    width: 100%;
   }
 
+  /* СКРЫВАЕМ ФОНОВУЮ КАРТИНКУ */
   .method-bg-image {
-    min-height: 30vh;
-    object-position: center;
+    display: none !important;
   }
 
   .method-overlay {
-    min-height: 30vh;
-    padding: 30px 16px;
-    margin-left: 0%;
+    min-height: auto;
+    padding: 20px 16px 30px 16px;
+    margin-left: 0;
     text-align: center;
     align-items: center;
-    justify-content: center;
-    padding-top: 20px;
+    justify-content: flex-start;
     display: flex;
     flex-direction: column;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* ===== ПОКАЗЫВАЕМ ЦЕНТРАЛЬНУЮ КАРТИНКУ ===== */
+  .method-center-image {
+    display: block !important;
+    width: 100%;
+    max-width: 340px;
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+
+  .method-center-img {
+    display: block !important;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
 
   /* ===== ВЕРХНЯЯ ЧАСТЬ ===== */
@@ -885,7 +916,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 0;
   }
 
   /* ===== НИЖНЯЯ ЧАСТЬ ===== */
@@ -916,7 +947,7 @@
     font-family: 'Roboto', sans-serif;
     color: #000000;
     line-height: 1.1;
-    margin: 0 0 10px 0;
+    margin: 0;
     text-align: center;
   }
 
@@ -991,7 +1022,7 @@
     padding: 6px 10px;
     min-width: 35px;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(249, 91, 128, 0.05);
   }
 
   .timer-value {
@@ -1114,21 +1145,28 @@
 
 @media (max-width: 360px) {
   .method-hero {
-    min-height: 25vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height: auto;
   }
-  .method-bg-image {
-    min-height: 25vh;
-    object-position: center;
-  }
+
   .method-overlay {
-    min-height: 25vh;
-    padding: 20px 12px;
-    padding-top: 15px;
-    justify-content: center;
+    padding: 15px 12px 20px 12px;
   }
+
+  .method-center-image {
+    display: block !important;
+    max-width: 280px;
+    margin: 15px auto;
+    padding: 0 10px;
+  }
+
+  .method-center-img {
+    display: block !important;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
   .method-title {
     font-size: 18px;
   }
