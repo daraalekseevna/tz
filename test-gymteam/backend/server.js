@@ -24,9 +24,9 @@ const pool = new Pool({
 
 pool.connect((err) => {
   if (err) {
-    console.error('❌ Ошибка подключения к PostgreSQL:', err.stack);
+    console.error('Ошибка подключения к PostgreSQL:', err.stack);
   } else {
-    console.log('✅ PostgreSQL подключена');
+    console.log('PostgreSQL подключена');
   }
 });
 
@@ -55,12 +55,7 @@ async function sendPartnerCode(email, name, code) {
         <p style="color: #666; margin-top: 15px;">Используйте этот код для регистрации</p>
       </div>
       
-      <div style="background: #f0f0f0; padding: 20px; border-radius: 12px; margin-top: 20px;">
-        <p style="margin: 0; color: #555; font-size: 14px;">
-          <strong>Ваши данные:</strong><br>
-          Имя: ${name}<br>
-          Email: ${email}
-        </p>
+      
       </div>
       
       <p style="text-align: center; color: #888; font-size: 14px; margin-top: 30px;">
@@ -69,13 +64,7 @@ async function sendPartnerCode(email, name, code) {
     </div>
   `;
 
-  try {
-    const result = await sendEmail(email, '🎉 Ваш партнёрский код амбассадора', htmlContent);
-    return result;
-  } catch (error) {
-    console.error('❌ Ошибка отправки письма:', error);
-    return false;
-  }
+  
 }
 
 // ===== API РОУТЫ =====
@@ -251,7 +240,7 @@ app.get('/healthz', (req, res) => {
 
 // ===== ЗАПУСК СЕРВЕРА =====
 app.listen(PORT, () => {
-  console.log(`🚀 Сервер запущен на порту ${PORT}`);
-  console.log(`📧 Отправка через: Resend`);
-  console.log(`📊 Админ-панель: http://localhost:${PORT}/api/applications`);
+  console.log(`Сервер запущен на порту ${PORT}`);
+  console.log(`Отправка через: Resend`);
+  console.log(`Админ-панель: http://localhost:${PORT}/api/applications`);
 });

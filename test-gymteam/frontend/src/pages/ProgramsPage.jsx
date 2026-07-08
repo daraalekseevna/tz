@@ -14,8 +14,8 @@ function ProgramsPage() {
   const [submitStatus, setSubmitStatus] = useState(null);
   const [partnerCode, setPartnerCode] = useState(null);
 
-  // 👇 ДОБАВЬТЕ ЭТУ СТРОКУ
-  const API_URL = process.env.REACT_APP_API_URL || 'https://ambassador-backend-h10x.onrender.com';
+  // API_URL теперь всегда указывает на Render (без localhost)
+  const API_URL = 'https://ambassador-backend-h10x.onrender.com';
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -63,7 +63,6 @@ function ProgramsPage() {
     setPartnerCode(null);
 
     try {
-      // 👇 ЗДЕСЬ МЕНЯЕМ URL
       const response = await fetch(`${API_URL}/api/applications`, {
         method: 'POST',
         headers: {
@@ -192,21 +191,10 @@ function ProgramsPage() {
               </label>
             </div>
 
-            {submitStatus === 'success' && partnerCode && (
-              <div className="success-message">
-                ✅ Партнёрский код <strong>{partnerCode}</strong> отправлен на вашу почту!
-              </div>
-            )}
-
-            {submitStatus === 'exists' && partnerCode && (
-              <div className="exists-message">
-                📧 Вы уже зарегистрированы! Ваш код: <strong>{partnerCode}</strong>
-              </div>
-            )}
 
             {submitStatus === 'error' && (
               <div className="error-message">
-                ❌ Произошла ошибка. Пожалуйста, попробуйте позже.
+              Произошла ошибка. Пожалуйста, попробуйте позже.
               </div>
             )}
           </div>
