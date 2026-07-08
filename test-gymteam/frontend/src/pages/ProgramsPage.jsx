@@ -14,6 +14,9 @@ function ProgramsPage() {
   const [submitStatus, setSubmitStatus] = useState(null);
   const [partnerCode, setPartnerCode] = useState(null);
 
+  // 👇 ДОБАВЬТЕ ЭТУ СТРОКУ
+  const API_URL = process.env.REACT_APP_API_URL || 'https://ambassador-backend-h10x.onrender.com';
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -60,7 +63,8 @@ function ProgramsPage() {
     setPartnerCode(null);
 
     try {
-      const response = await fetch('http://localhost:5000/api/applications', {
+      // 👇 ЗДЕСЬ МЕНЯЕМ URL
+      const response = await fetch(`${API_URL}/api/applications`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -82,6 +86,7 @@ function ProgramsPage() {
 
       setSubmitStatus('success');
       setPartnerCode(data.data.partnerCode);
+      alert(`🎉 Партнёрский код отправлен на вашу почту!\nКод: ${data.data.partnerCode}`);
       
       setFormData({
         email: '',
@@ -189,17 +194,19 @@ function ProgramsPage() {
 
             {submitStatus === 'success' && partnerCode && (
               <div className="success-message">
+                ✅ Партнёрский код <strong>{partnerCode}</strong> отправлен на вашу почту!
               </div>
             )}
 
             {submitStatus === 'exists' && partnerCode && (
               <div className="exists-message">
+                📧 Вы уже зарегистрированы! Ваш код: <strong>{partnerCode}</strong>
               </div>
             )}
 
             {submitStatus === 'error' && (
               <div className="error-message">
-                Произошла ошибка. Пожалуйста, попробуйте позже.
+                ❌ Произошла ошибка. Пожалуйста, попробуйте позже.
               </div>
             )}
           </div>
