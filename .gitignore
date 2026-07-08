@@ -1,0 +1,30 @@
+# Зависимости
+node_modules/
+package-lock.json
+
+# Файлы окружения
+.env
+.env.local
+.env.production
+
+# Логи
+*.log
+npm-debug.log*
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Временные файлы
+tmp/
+temp/
+
+# Build
+dist/
+build/
