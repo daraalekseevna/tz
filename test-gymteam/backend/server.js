@@ -12,14 +12,14 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// ===== ПОДКЛЮЧЕНИЕ К POSTGRESQL (с принудительным IPv4) =====
+// ===== ПОДКЛЮЧЕНИЕ К POSTGRESQL =====
 const pool = new Pool({
-  host: process.env.DB_HOST || 'db.oxjgctdrzraiwsbpxhdp.supabase.co',
-  port: process.env.DB_PORT || 5432,
-  user: process.env.DB_USER || 'postgres',
+  host: process.env.DB_HOST || 'aws-0-eu-north-1.pooler.supabase.com',
+  port: process.env.DB_PORT || 6543,
+  user: process.env.DB_USER || 'postgres.oxjgctdrzraiwsbpxhdp',
   password: process.env.DB_PASSWORD || 'Aloconsole2004',
   database: process.env.DB_NAME || 'postgres',
-  family: 4, // ← ПРИНУДИТЕЛЬНО ИСПОЛЬЗУЕМ IPv4
+  family: 4,
 });
 
 pool.connect((err) => {
@@ -40,7 +40,7 @@ function generatePartnerCode() {
   return code;
 }
 
-// ===== ОТПРАВКА ПИСЬМА ЧЕРЕЗ RESEND =====
+// ===== ОТПРАВКА ПИСЬМА =====
 async function sendPartnerCode(email, name, code) {
   const htmlContent = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 30px; background: #f9f9f9; border-radius: 20px;">
@@ -55,7 +55,12 @@ async function sendPartnerCode(email, name, code) {
         <p style="color: #666; margin-top: 15px;">Используйте этот код для регистрации</p>
       </div>
       
-      
+      <div style="background: #f0f0f0; padding: 20px; border-radius: 12px; margin-top: 20px;">
+        <p style="margin: 0; color: #555; font-size: 14px;">
+          <strong>Ваши данные:</strong><br>
+          Имя: ${name}<br>
+          Email: ${email}
+        </p>
       </div>
       
       <p style="text-align: center; color: #888; font-size: 14px; margin-top: 30px;">
@@ -64,7 +69,13 @@ async function sendPartnerCode(email, name, code) {
     </div>
   `;
 
-  
+  try {
+    const result = await sendEmail(email, 'Ваш партнёрский код амбассадора', htmlContent);
+    return result;
+  } catch (error) {
+    console.error('Ошибка отправки письма:', error);
+    return false;
+  }
 }
 
 // ===== API РОУТЫ =====
@@ -74,7 +85,6 @@ app.post('/api/applications', async (req, res) => {
   try {
     const { email, name, phone } = req.body;
 
-    // Проверка на дубликат
     const existing = await pool.query(
       'SELECT * FROM applications WHERE email = $1',
       [email]
@@ -87,7 +97,6 @@ app.post('/api/applications', async (req, res) => {
       });
     }
 
-    // Генерация уникального кода
     let partnerCode;
     let isUnique = false;
     while (!isUnique) {
@@ -99,7 +108,6 @@ app.post('/api/applications', async (req, res) => {
       if (exists.rows.length === 0) isUnique = true;
     }
 
-    // Создание заявки
     const result = await pool.query(
       `INSERT INTO applications (email, name, phone, "partnerCode") 
        VALUES ($1, $2, $3, $4) 
@@ -109,7 +117,6 @@ app.post('/api/applications', async (req, res) => {
 
     const application = result.rows[0];
 
-    // Отправка письма
     await sendPartnerCode(email, name, partnerCode);
 
     res.status(201).json({
@@ -220,27 +227,25 @@ app.post('/api/test-email', async (req, res) => {
     const success = await sendPartnerCode(email, 'Тест', testCode);
     
     if (success) {
-      res.json({ success: true, message: 'Письмо отправлено через Resend' });
+      res.json({ success: true, message: 'Письмо отправлено' });
     } else {
-      res.status(500).json({ success: false, message: 'Ошибка отправки через Resend' });
+      res.status(500).json({ success: false, message: 'Ошибка отправки' });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-// 8. Health Check для Render
+// 8. Health Check
 app.get('/healthz', (req, res) => {
   res.status(200).json({ 
     status: 'ok', 
-    timestamp: new Date().toISOString(),
-    uptime: process.uptime()
+    timestamp: new Date().toISOString()
   });
 });
 
 // ===== ЗАПУСК СЕРВЕРА =====
 app.listen(PORT, () => {
   console.log(`Сервер запущен на порту ${PORT}`);
-  console.log(`Отправка через: Resend`);
-  console.log(`Админ-панель: http://localhost:${PORT}/api/applications`);
+  console.log(`Отправка через: Yandex`);
 });
