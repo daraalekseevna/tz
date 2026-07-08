@@ -10,10 +10,16 @@ function MethodPage() {
     seconds: 44
   });
 
-  // Создаём ссылку на блок с прайсом
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedTariff, setSelectedTariff] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: ''
+  });
+
   const pricingRef = useRef(null);
 
-  // Функция для плавной прокрутки к прайсу
   const scrollToPricing = () => {
     if (pricingRef.current) {
       pricingRef.current.scrollIntoView({ 
@@ -58,15 +64,61 @@ function MethodPage() {
     return () => clearInterval(timer);
   }, []);
 
+  // Открыть модальное окно
+  const openModal = (tariff) => {
+    setSelectedTariff(tariff);
+    setIsModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  // Закрыть модальное окно
+  const closeModal = () => {
+    setIsModalOpen(false);
+    document.body.style.overflow = 'auto';
+    setFormData({ name: '', phone: '', email: '' });
+  };
+
+  // Обработка изменения полей
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  // Отправка заявки
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Здесь можно добавить отправку данных на сервер
+    console.log('Заявка отправлена:', {
+      tariff: selectedTariff,
+      ...formData
+    });
+
+    // Показываем сообщение об успехе
+    alert(`Заявка на тариф "${selectedTariff}" успешно отправлена!`);
+    
+    // Закрываем модальное окно
+    closeModal();
+  };
+
+  // Закрытие по клику на фон
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      closeModal();
+    }
+  };
+
   return (
     <div className="method-page">
 
-      {/* ===== ГЕРОЙ-БЛОК С КАРТИНКОЙ 000.png ===== */}
+      {/* ===== ГЕРОЙ-БЛОК ===== */}
       <div className="method-hero">
         <img src="/images/000.png" alt="Метод Усмановой" className="method-bg-image" />
         
         <div className="method-overlay">
-          {/* ===== ВЕРХНЯЯ ЧАСТЬ (на картинке) ===== */}
           <div className="method-top">
             <p className="method-badge">
               ХВАТИТ ИСКАТЬ СПОСОБ. ЕСТЬ ОБНОВЛЁННЫЙ <br />
@@ -80,7 +132,10 @@ function MethodPage() {
             </h1>
           </div>
 
-          {/* ===== НИЖНЯЯ ЧАСТЬ (тоже на картинке, с большим отступом) ===== */}
+          <div className="method-image-wrapper">
+            <img src="/images/1234.png" alt="Метод Усмановой" className="method-center-image" />
+          </div>
+
           <div className="method-bottom">
             <p className="method-desc">
               <span className="pink-text">Домашние тренировки с Катей и готовое питание по неделям</span><br />
@@ -181,12 +236,10 @@ function MethodPage() {
             <img src="/images/10.png" alt="Результат" className="changes-bottom-image" />
           </div>
 
-          {/* КНОПКА "ХОЧУ ТАК ЖЕ" — ПРОКРУТКА К ПРАЙСУ */}
           <button className="changes-btn" onClick={scrollToPricing}>
             ХОЧУ ТАК ЖЕ
           </button>
 
-          {/* ===== БЛОК С ПРАЙСОМ ===== */}
           <div className="pricing-full-card" ref={pricingRef}>
             <div className="pricing-full-content">
               <p className="pricing-vpn">Для корректной работы сайта отключите VPN</p>
@@ -206,93 +259,163 @@ function MethodPage() {
                   {String(time.hours).padStart(2, '0')} часов: {String(time.minutes).padStart(2, '0')} минут: {String(time.seconds).padStart(2, '0')} секунды
                 </span>
               </div>
-<div className="pricing-grid-main">
-  {/* ЛЁГКИЙ СТАРТ */}
-  <div className="pricing-card-main card-small">
-    <h4>Лёгкий старт</h4>
-    <div className="card-line"></div>
-    <p className="price-main">3 140 ₽</p>
-    <p className="discount-main">Скидка: 51%</p>
-    <p className="what-included">Что входит:</p>
-    <ul className="pricing-list">
-      <li>
-        <img src="/images/21.png" alt="check" className="pricing-icon" />
-        <span>Обновлённый Метод: 20 тренировок, питание по неделям, растяжка и восстановление</span>
-      </li>
-      <li>
-        <img src="/images/21.png" alt="check" className="pricing-icon" />
-        <span>5 лекций по питанию: уходит тяга к сладкому</span>
-      </li>
-    </ul>
-    <button className="pricing-btn-main">ЗАБРАТЬ НАБОР</button>
-  </div>
 
-  {/* ПРЕОБРАЖЕНИЕ */}
-  <div className="pricing-card-main popular-main card-medium">
-    <h4>Преображение</h4>
-    <div className="card-line"></div>
-    <span className="badge-main">ВЫБОР БОЛЬШИНСТВА</span>
-    <p className="price-main">5 490 ₽</p>
-    <p className="discount-main">Скидка: 75%</p>
-    <p className="what-included">Что входит:</p>
-    <ul className="pricing-list">
-      <li>
-        <img src="/images/21.png" alt="check" className="pricing-icon" />
-        <span>Обновлённый Метод: 20 тренировок, питание по неделям, растяжка и восстановление</span>
-      </li>
-      <li>
-        <img src="/images/21.png" alt="check" className="pricing-icon" />
-        <span>5 лекций по питанию: уходит тяга к сладкому</span>
-      </li>
-      <li>
-        <img src="/images/21.png" alt="check" className="pricing-icon" />
-        <span>Курс питания с Вероникой Гусаковой: 42 урока без диет</span>
-      </li>
-      <li>
-        <img src="/images/21.png" alt="check" className="pricing-icon" />
-        <span>5 тренировок Стаса Свободы: плоский живот и осанка через дыхание</span>
-      </li>
-    </ul>
-    <button className="pricing-btn-main">ЗАБРАТЬ НАБОР</button>
-  </div>
+              <div className="pricing-grid-main">
+                {/* ЛЁГКИЙ СТАРТ */}
+                <div className="pricing-card-main card-small">
+                  <h4>Лёгкий старт</h4>
+                  <div className="card-line"></div>
+                  <p className="price-main">3 140 ₽</p>
+                  <p className="discount-main">Скидка: 51%</p>
+                  <p className="what-included">Что входит:</p>
+                  <ul className="pricing-list">
+                    <li>
+                      <img src="/images/21.png" alt="check" className="pricing-icon" />
+                      <span>Обновлённый Метод: 20 тренировок, питание по неделям, растяжка и восстановление</span>
+                    </li>
+                    <li>
+                      <img src="/images/21.png" alt="check" className="pricing-icon" />
+                      <span>5 лекций по питанию: уходит тяга к сладкому</span>
+                    </li>
+                  </ul>
+                  <button className="pricing-btn-main" onClick={() => openModal('Лёгкий старт')}>
+                    ЗАБРАТЬ НАБОР
+                  </button>
+                </div>
 
-  {/* МАКСИМУМ */}
-  <div className="pricing-card-main card-large">
-    <h4>Максимум</h4>
-    <div className="card-line"></div>
-    <span className="badge-max">МАКСИМАЛЬНЫЙ РЕЗУЛЬТАТ</span>
-    <p className="price-main">6 890 ₽</p>
-    <p className="discount-main">Скидка: 82%</p>
-    <p className="what-included">Что входит:</p>
-    <ul className="pricing-list">
-      <li>
-        <img src="/images/21.png" alt="check" className="pricing-icon" />
-        <span>Обновлённый Метод: 20 тренировок, питание по неделям, растяжка и восстановление</span>
-      </li>
-      <li>
-        <img src="/images/21.png" alt="check" className="pricing-icon" />
-        <span>5 лекций по питанию: уходит тяга к сладкому</span>
-      </li>
-      <li>
-        <img src="/images/21.png" alt="check" className="pricing-icon" />
-        <span>Курс питания с Вероникой Гусаковой: 42 урока без диет</span>
-      </li>
-      <li>
-        <img src="/images/21.png" alt="check" className="pricing-icon" />
-        <span>5 тренировок Стаса Свободы: плоский живот и осанка через дыхание</span>
-      </li>
-      <li>
-        <img src="/images/21.png" alt="check" className="pricing-icon" />
-        <span>Курс «Жиросжигающий»: три уровня по 45 дней на максимальное жиросжигание</span>
-      </li>
-    </ul>
-    <button className="pricing-btn-main">ЗАБРАТЬ НАБОР</button>
-  </div>
-</div>
+                {/* ПРЕОБРАЖЕНИЕ */}
+                <div className="pricing-card-main popular-main card-medium">
+                  <h4>Преображение</h4>
+                  <div className="card-line"></div>
+                  <span className="badge-main">ВЫБОР БОЛЬШИНСТВА</span>
+                  <p className="price-main">5 490 ₽</p>
+                  <p className="discount-main">Скидка: 75%</p>
+                  <p className="what-included">Что входит:</p>
+                  <ul className="pricing-list">
+                    <li>
+                      <img src="/images/21.png" alt="check" className="pricing-icon" />
+                      <span>Обновлённый Метод: 20 тренировок, питание по неделям, растяжка и восстановление</span>
+                    </li>
+                    <li>
+                      <img src="/images/21.png" alt="check" className="pricing-icon" />
+                      <span>5 лекций по питанию: уходит тяга к сладкому</span>
+                    </li>
+                    <li>
+                      <img src="/images/21.png" alt="check" className="pricing-icon" />
+                      <span>Курс питания с Вероникой Гусаковой: 42 урока без диет</span>
+                    </li>
+                    <li>
+                      <img src="/images/21.png" alt="check" className="pricing-icon" />
+                      <span>5 тренировок Стаса Свободы: плоский живот и осанка через дыхание</span>
+                    </li>
+                  </ul>
+                  <button className="pricing-btn-main" onClick={() => openModal('Преображение')}>
+                    ЗАБРАТЬ НАБОР
+                  </button>
+                </div>
+
+                {/* МАКСИМУМ */}
+                <div className="pricing-card-main card-large">
+                  <h4>Максимум</h4>
+                  <div className="card-line"></div>
+                  <span className="badge-max">МАКСИМАЛЬНЫЙ РЕЗУЛЬТАТ</span>
+                  <p className="price-main">6 890 ₽</p>
+                  <p className="discount-main">Скидка: 82%</p>
+                  <p className="what-included">Что входит:</p>
+                  <ul className="pricing-list">
+                    <li>
+                      <img src="/images/21.png" alt="check" className="pricing-icon" />
+                      <span>Обновлённый Метод: 20 тренировок, питание по неделям, растяжка и восстановление</span>
+                    </li>
+                    <li>
+                      <img src="/images/21.png" alt="check" className="pricing-icon" />
+                      <span>5 лекций по питанию: уходит тяга к сладкому</span>
+                    </li>
+                    <li>
+                      <img src="/images/21.png" alt="check" className="pricing-icon" />
+                      <span>Курс питания с Вероникой Гусаковой: 42 урока без диет</span>
+                    </li>
+                    <li>
+                      <img src="/images/21.png" alt="check" className="pricing-icon" />
+                      <span>5 тренировок Стаса Свободы: плоский живот и осанка через дыхание</span>
+                    </li>
+                    <li>
+                      <img src="/images/21.png" alt="check" className="pricing-icon" />
+                      <span>Курс «Жиросжигающий»: три уровня по 45 дней на максимальное жиросжигание</span>
+                    </li>
+                  </ul>
+                  <button className="pricing-btn-main" onClick={() => openModal('Максимум')}>
+                    ЗАБРАТЬ НАБОР
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* ===== МОДАЛЬНОЕ ОКНО ===== */}
+      {isModalOpen && (
+        <div className="modal-overlay" onClick={handleOverlayClick}>
+          <div className="modal-content">
+            <button className="modal-close" onClick={closeModal}>×</button>
+            
+            <h2 className="modal-title">Оформить заявку</h2>
+            <p className="modal-subtitle">
+              Тариф: <span className="modal-tariff">{selectedTariff}</span>
+            </p>
+            
+            <form onSubmit={handleSubmit} className="modal-form">
+              <div className="form-group">
+                <label htmlFor="name">Ваше имя</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Иван Иванов"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="phone">Телефон</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="+7 (999) 123-45-67"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="ivan@mail.ru"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+
+              <button type="submit" className="modal-submit-btn">
+                Отправить заявку
+              </button>
+            </form>
+
+            <p className="modal-footer">
+              Нажимая кнопку, вы соглашаетесь с <a href="#">условиями обработки данных</a>
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

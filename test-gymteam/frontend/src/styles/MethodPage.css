@@ -11,30 +11,7 @@
   color: #F95B80;
 }
 
-/* ===== КНОПКА НАЗАД ===== */
-.back-link {
-  position: absolute;
-  top: 30px;
-  left: 30px;
-  z-index: 10;
-  color: #ffffff;
-  text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  transition: 0.3s;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 8px 16px;
-  border-radius: 100px;
-}
-
-.back-link:hover {
-  color: #F95B80;
-  background: rgba(255, 255, 255, 0.9);
-  transform: translateX(-4px);
-}
-
-/* ===== ГЕРОЙ-БЛОК С КАРТИНКОЙ ===== */
+/* ===== ГЕРОЙ-БЛОК ===== */
 .method-hero {
   position: relative;
   width: 100%;
@@ -45,6 +22,7 @@
   justify-content: flex-start;
 }
 
+/* Фоновое изображение для десктопа */
 .method-bg-image {
   width: 100%;
   height: 100%;
@@ -71,16 +49,16 @@
   min-height: 100vh;
 }
 
-/* ===== СКРЫВАЕМ ЦЕНТРАЛЬНУЮ КАРТИНКУ НА ДЕСКТОПЕ ===== */
+/* ===== МОБИЛЬНАЯ КАРТИНКА (скрыта на десктопе) ===== */
+.method-image-wrapper {
+  display: none;
+}
+
 .method-center-image {
   display: none;
 }
 
-.method-center-img {
-  display: none;
-}
-
-/* ===== БЕЙДЖ ===== */
+/* ===== ВЕРХНЯЯ ЧАСТЬ ===== */
 .method-badge {
   font-size: 18px;
   font-weight: 500;
@@ -91,7 +69,6 @@
   text-align: left;
 }
 
-/* ===== ЗАГОЛОВОК ===== */
 .method-title {
   font-size: 48px;
   font-weight: 700;
@@ -106,14 +83,14 @@
   color: #F95B80;
 }
 
-/* ===== ОПИСАНИЕ ===== */
+/* ===== НИЖНЯЯ ЧАСТЬ ===== */
 .method-desc {
   font-size: 18px;
   font-weight: 400;
   font-family: 'Roboto', sans-serif;
   color: #555555;
   line-height: 1.2;
-  margin: 50px 0 50px 0;
+  margin: 50px 0 30px 0;
   text-align: left;
   max-width: 600px;
 }
@@ -123,7 +100,6 @@
   font-weight: 500;
 }
 
-/* ===== КНОПКА ===== */
 .method-btn {
   background-color: #F95B80;
   color: #ffffff;
@@ -147,7 +123,6 @@
   transform: scale(1.02);
 }
 
-/* ===== VPN ===== */
 .method-vpn {
   font-size: 14px;
   font-weight: 400;
@@ -217,7 +192,7 @@
 /* ===== БЕГУЩАЯ СТРОКА ===== */
 .marquee-wrapper {
   background-color: #F95B80;
-  padding: 12px 0;
+  padding: 20px 0;
   overflow: hidden;
   width: 100%;
 }
@@ -233,10 +208,11 @@
   display: inline-block;
   color: #ffffff;
   font-family: 'Roboto', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   letter-spacing: 1px;
   padding: 0 20px;
+  line-height: 1.4;
 }
 
 @keyframes marquee-scroll-right {
@@ -475,12 +451,6 @@
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.10);
 }
 
-/* ===== УБИРАЕМ ВЕРХНЮЮ ПОЛОСКУ ===== */
-.pricing-card-main .card-header {
-  display: none;
-}
-
-/* ===== ЗАГОЛОВОК КАРТОЧКИ ===== */
 .pricing-card-main h4 {
   font-size: 28px;
   font-weight: 400;
@@ -489,7 +459,6 @@
   margin: 0 0 6px 0;
 }
 
-/* ===== ПОЛОСКА ПОД НАЗВАНИЕМ ===== */
 .pricing-card-main .card-line {
   width: 100%;
   height: 2px;
@@ -502,7 +471,6 @@
   background: linear-gradient(90deg, #F95B80, #F95B8040);
 }
 
-/* ===== БЕЙДЖИ ПОД ПОЛОСКОЙ ===== */
 .pricing-card-main .badge-main {
   display: inline-block;
   background: linear-gradient(135deg, #F95B80, #e04a6a);
@@ -535,7 +503,6 @@
   box-shadow: 0 2px 12px rgba(249, 91, 128, 0.3);
 }
 
-/* ===== ЦЕНА ===== */
 .price-main {
   font-size: 34px;
   font-weight: 800;
@@ -552,7 +519,6 @@
   margin: 0 0 16px 0;
 }
 
-/* ===== "ЧТО ВХОДИТ" ===== */
 .what-included {
   font-size: 15px;
   font-weight: 600;
@@ -562,7 +528,6 @@
   text-align: left;
 }
 
-/* ===== СПИСОК ===== */
 .pricing-list {
   list-style: none;
   padding: 0;
@@ -587,7 +552,6 @@
   flex: 1;
 }
 
-/* ===== ИКОНКА ===== */
 .pricing-icon {
   width: 20px;
   height: 20px;
@@ -596,7 +560,6 @@
   display: block;
 }
 
-/* ===== КНОПКА ===== */
 .pricing-btn-main {
   background: linear-gradient(135deg, #F95B80, #e04a6a);
   color: #ffffff;
@@ -621,7 +584,6 @@
   box-shadow: 0 8px 32px rgba(249, 91, 128, 0.35);
 }
 
-/* ===== ПОПУЛЯРНАЯ КАРТОЧКА ===== */
 .pricing-card-main.popular-main {
   border: 2px solid #F95B80;
   box-shadow: 0 4px 24px rgba(249, 91, 128, 0.15);
@@ -632,10 +594,6 @@
   transform: scale(1.04);
   box-shadow: 0 12px 48px rgba(249, 91, 128, 0.25);
 }
-
-/* ============================================ */
-/* ===== ВЫСОТА КАРТОЧЕК ===== */
-/* ============================================ */
 
 .card-small {
   min-height: 360px;
@@ -648,7 +606,6 @@
 }
 
 /* ===== АДАПТИВНАЯ ВЫСОТА ===== */
-
 @media (max-width: 1024px) {
   .card-small {
     min-height: 340px;
@@ -742,12 +699,6 @@
 }
 
 @media (max-width: 768px) {
-  .back-link {
-    top: 20px;
-    left: 20px;
-    font-size: 14px;
-    padding: 6px 14px;
-  }
   .method-hero {
     min-height: 85vh;
   }
@@ -811,14 +762,14 @@
   .timer-label-text {
     font-size: 10px;
   }
+  .marquee-wrapper {
+    padding: 16px 0;
+  }
   .marquee span {
-    font-size: 14px;
+    font-size: 16px;
   }
   .marquee {
     animation-duration: 16s;
-  }
-  .marquee-wrapper {
-    padding: 8px 0;
   }
   .changes-section {
     padding: 20px 0;
@@ -886,87 +837,24 @@
   .price-main {
     font-size: 28px;
   }
-  .pricing-card-main .badge-main {
-    top: 12px;
-    font-size: 10px;
-    padding: 3px 14px;
-  }
   .pricing-card-main h4 {
     font-size: 22px;
   }
 }
 
-@media (max-width: 600px) {
+/* ========================================================= */
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ (до 767px) - УВЕЛИЧЕННОЕ ФОТО ===== */
+/* ========================================================= */
+
+@media (max-width: 767px) {
   .method-hero {
-    min-height: 80vh;
-  }
-  .method-bg-image {
-    min-height: 80vh;
-    object-position: 65% center;
-  }
-  .method-overlay {
-    min-height: 80vh;
-    padding: 30px 20px;
-    margin-left: 0;
-    text-align: center;
-    align-items: center;
-  }
-  .method-title {
-    font-size: 26px;
-  }
-  .method-badge {
-    font-size: 13px;
-  }
-  .method-desc {
-    font-size: 14px;
-    margin: 20px 0 20px 0;
-  }
-  .method-btn {
-    padding: 16px 30px;
-    font-size: 15px;
-    max-width: 280px;
-  }
-  .method-vpn {
-    font-size: 12px;
-  }
-  .timer-value {
-    font-size: 30px;
-  }
-  .timer-item {
-    padding: 6px 10px;
-    min-width: 40px;
-  }
-  .timer-label-text {
-    font-size: 10px;
-  }
-  .timer-separator {
-    font-size: 20px;
-  }
-  .pricing-card-main {
-    max-width: 340px;
-  }
-}
-
-/* ============================================ */
-/* ===== МОБИЛЬНАЯ ВЕРСИЯ (до 480px) ===== */
-/* ============================================ */
-
-@media (max-width: 480px) {
-  .back-link {
-    top: 15px;
-    left: 15px;
-    font-size: 12px;
-    padding: 4px 12px;
-  }
-
-  .method-hero {
-    min-height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    background-color: #ffffff;
-    width: 100%;
+    min-height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    background-color: #ffffff !important;
+    width: 100% !important;
   }
 
   .method-bg-image {
@@ -974,366 +862,716 @@
   }
 
   .method-overlay {
-    min-height: auto;
-    padding: 20px 16px 30px 16px;
-    margin-left: 0;
-    text-align: center;
-    align-items: center;
-    justify-content: flex-start;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 100%;
-    max-width: 100%;
+    min-height: auto !important;
+    padding: 20px 16px 30px 16px !important;
+    margin-left: 0 !important;
+    text-align: center !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* ===== УВЕЛИЧЕННОЕ ФОТО НА МОБИЛЬНЫХ ===== */
+  .method-image-wrapper {
+    display: block !important;
+    width: 100% !important;
+    max-width: 570px !important;
+    height: 740px !important;
+    margin: 10px auto 20px auto !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    border-radius: 20px !important;
   }
 
   .method-center-image {
     display: block !important;
-    width: 100%;
-    max-width: 340px;
-    margin: 20px auto;
-    padding: 0 15px;
-  }
-
-  .method-center-img {
-    display: block !important;
-    width: 100%;
-    height: auto;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: left center !important;
+    border-radius: 0 !important;
   }
 
   .method-top {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 0;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin-bottom: 0 !important;
   }
 
   .method-bottom {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding-top: 10px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding-top: 0 !important;
   }
 
   .method-badge {
-    font-size: 12px;
-    font-weight: 400;
-    font-family: 'Roboto', sans-serif;
-    color: #F95B80;
-    margin-bottom: 10px;
-    line-height: 1.3;
-    text-align: center;
-    max-width: 100%;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    font-family: 'Roboto', sans-serif !important;
+    color: #F95B80 !important;
+    margin-bottom: 10px !important;
+    line-height: 1.3 !important;
+    text-align: center !important;
+    max-width: 100% !important;
   }
 
   .method-title {
-    font-size: 22px;
-    font-weight: 700;
-    font-family: 'Roboto', sans-serif;
-    color: #000000;
-    line-height: 1.1;
-    margin: 0;
-    text-align: center;
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    font-family: 'Roboto', sans-serif !important;
+    color: #000000 !important;
+    line-height: 1.1 !important;
+    margin: 0 !important;
+    text-align: center !important;
   }
 
   .method-title .pink-text {
-    color: #F95B80;
+    color: #F95B80 !important;
   }
 
   .method-desc {
-    font-size: 13px;
-    font-weight: 400;
-    font-family: 'Roboto', sans-serif;
-    color: #555555;
-    line-height: 1.4;
-    margin: 0 0 15px 0;
-    text-align: center;
-    max-width: 100%;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    font-family: 'Roboto', sans-serif !important;
+    color: #555555 !important;
+    line-height: 1.4 !important;
+    margin: 0 0 20px 0 !important;
+    text-align: center !important;
+    max-width: 100% !important;
   }
 
   .method-desc .pink-text {
-    color: #F95B80;
-    font-weight: 500;
+    color: #F95B80 !important;
+    font-weight: 500 !important;
   }
 
   .method-btn {
-    align-self: center;
-    padding: 14px 25px;
-    font-size: 14px;
-    font-weight: 600;
-    font-family: 'Roboto', sans-serif;
-    border-radius: 50px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    width: 100%;
-    max-width: 240px;
-    margin-bottom: 15px;
+    align-self: center !important;
+    padding: 16px 30px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    font-family: 'Roboto', sans-serif !important;
+    border-radius: 50px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    width: 100% !important;
+    max-width: 260px !important;
+    margin-bottom: 15px !important;
   }
 
   .method-vpn {
-    font-size: 11px;
-    font-weight: 400;
-    font-family: 'Roboto', sans-serif;
-    color: #777777;
-    margin: 0 0 15px 0;
-    text-align: center;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    font-family: 'Roboto', sans-serif !important;
+    color: #777777 !important;
+    margin: 0 0 15px 0 !important;
+    text-align: center !important;
   }
 
   .method-timer {
-    text-align: center;
-    max-width: 100%;
-    margin-top: 10px;
+    text-align: center !important;
+    max-width: 100% !important;
+    margin-top: 10px !important;
   }
 
   .timer-label {
-    font-size: 14px;
-    font-weight: 500;
-    font-family: 'Roboto', sans-serif;
-    color: #000000;
-    margin: 0 0 10px 0;
-    text-align: center;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    font-family: 'Roboto', sans-serif !important;
+    color: #000000 !important;
+    margin: 0 0 10px 0 !important;
+    text-align: center !important;
   }
 
   .timer {
-    justify-content: center;
-    gap: 4px;
+    justify-content: center !important;
+    gap: 4px !important;
   }
 
   .timer-item {
-    padding: 6px 10px;
-    min-width: 35px;
-    border-radius: 8px;
-    background: rgba(249, 91, 128, 0.05);
+    padding: 6px 12px !important;
+    min-width: 40px !important;
+    border-radius: 8px !important;
+    background: rgba(249, 91, 128, 0.05) !important;
   }
 
   .timer-value {
-    font-size: 22px;
-    font-weight: 100;
-    font-family: 'Roboto', sans-serif;
-    color: #F95B80;
-    line-height: 1;
+    font-size: 28px !important;
+    font-weight: 100 !important;
+    font-family: 'Roboto', sans-serif !important;
+    color: #F95B80 !important;
+    line-height: 1 !important;
   }
 
   .timer-label-text {
-    font-size: 9px;
-    font-weight: 400;
-    font-family: 'Roboto', sans-serif;
-    color: #999999;
-    margin-top: 2px;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    font-family: 'Roboto', sans-serif !important;
+    color: #999999 !important;
+    margin-top: 2px !important;
   }
 
   .timer-separator {
-    font-size: 16px;
-    font-weight: 500;
-    color: #F95B80;
-    padding: 0 2px;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    color: #F95B80 !important;
+    padding: 0 2px !important;
   }
 
+  .marquee-wrapper {
+    padding: 14px 0 !important;
+  }
   .marquee span {
-    font-size: 12px;
+    font-size: 14px !important;
   }
   .marquee {
-    animation-duration: 14s;
-  }
-  .marquee-wrapper {
-    padding: 6px 0;
+    animation-duration: 14s !important;
   }
 
   .changes-section {
-    padding-top: 20px;
+    padding-top: 20px !important;
   }
   .changes-title {
-    font-size: 18px;
-    margin: 15px 0 15px 0;
+    font-size: 18px !important;
+    margin: 15px 0 15px 0 !important;
   }
   .changes-subtitle {
-    font-size: 13px;
-    margin-bottom: 20px;
+    font-size: 13px !important;
+    margin-bottom: 20px !important;
   }
   .white-box {
-    padding: 10px 12px;
-    border-radius: 18px;
+    padding: 10px 12px !important;
+    border-radius: 18px !important;
   }
   .change-item {
-    gap: 10px;
-    margin-bottom: 6px;
+    gap: 10px !important;
+    margin-bottom: 6px !important;
   }
   .change-icon-img {
-    width: 22px;
-    height: 22px;
+    width: 22px !important;
+    height: 22px !important;
   }
   .change-item-title {
-    font-size: 14px;
+    font-size: 14px !important;
   }
   .change-item-desc {
-    font-size: 13px;
+    font-size: 13px !important;
   }
   .changes-btn {
-    padding: 8px 20px;
-    font-size: 12px;
-    width: 100%;
+    padding: 8px 20px !important;
+    font-size: 12px !important;
+    width: 100% !important;
   }
   .changes-bottom-image {
-    margin: 12px auto 10px auto;
-    border-radius: 14px;
+    margin: 12px auto 10px auto !important;
+    border-radius: 14px !important;
   }
 
   .pricing-full-card {
-    padding: 30px 10px;
-    margin-top: 40px;
+    padding: 30px 10px !important;
+    margin-top: 40px !important;
   }
   .pricing-title-main {
-    font-size: 22px;
+    font-size: 22px !important;
   }
   .pricing-subtitle-main {
-    font-size: 14px;
+    font-size: 14px !important;
   }
   .pricing-timer-mini {
-    font-size: 15px;
+    font-size: 15px !important;
   }
   .pricing-timer-mini-value {
-    font-size: 20px;
+    font-size: 20px !important;
   }
   .price-main {
-    font-size: 26px;
+    font-size: 26px !important;
   }
   .pricing-card-main {
-    max-width: 100%;
-    padding: 20px 16px;
-    border-radius: 20px;
+    max-width: 100% !important;
+    padding: 20px 16px !important;
+    border-radius: 20px !important;
   }
   .pricing-card-main h4 {
-    font-size: 22px;
+    font-size: 22px !important;
   }
   .pricing-list li {
-    font-size: 13px;
-    padding: 4px 0;
-    gap: 10px;
+    font-size: 13px !important;
+    padding: 4px 0 !important;
+    gap: 10px !important;
   }
   .pricing-icon {
-    width: 17px;
-    height: 17px;
+    width: 17px !important;
+    height: 17px !important;
   }
   .pricing-btn-main {
-    font-size: 14px;
-    padding: 12px 20px;
+    font-size: 14px !important;
+    padding: 12px 20px !important;
   }
   .pricing-card-main .badge-main {
-    font-size:11px;
-    padding: 2px 12px;
+    font-size: 10px !important;
+    padding: 2px 12px !important;
   }
   .pricing-card-main .badge-max {
-    font-size: 11px;
-    padding: 6px 12px;
+    font-size: 10px !important;
+    padding: 2px 12px !important;
   }
 }
 
 /* ============================================ */
-/* ===== ЭКСТРА-МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 360px) ===== */
+/* ===== ТЕЛЕФОНЫ (до 480px) - ЕЩЕ БОЛЬШЕ ФОТО ===== */
 /* ============================================ */
 
-@media (max-width: 360px) {
-  .method-hero {
-    min-height: auto;
-  }
-
-  .method-overlay {
-    padding: 15px 12px 20px 12px;
-  }
-
-  .method-center-image {
-    display: block !important;
-    max-width: 280px;
-    margin: 15px auto;
-    padding: 0 10px;
-  }
-
-  .method-center-img {
-    display: block !important;
-    width: 100%;
-    height: auto;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+@media (max-width: 480px) {
+  .method-image-wrapper {
+    max-width: 100% !important;
+    height: 480px !important;
+    margin: 10px 0 15px 0 !important;
+    border-radius: 16px !important;
+    padding: 0 !important;
   }
 
   .method-title {
-    font-size: 18px;
+    font-size: 24px !important;
   }
+
   .method-badge {
-    font-size: 11px;
+    font-size: 12px !important;
   }
+
   .method-desc {
-    font-size: 12px;
-    margin: 0 0 12px 0;
+    font-size: 14px !important;
+    margin: 0 0 15px 0 !important;
   }
+
   .method-btn {
-    padding: 12px 20px;
-    font-size: 13px;
-    max-width: 200px;
+    padding: 14px 25px !important;
+    font-size: 14px !important;
+    max-width: 220px !important;
   }
+
   .timer-value {
-    font-size: 20px;
+    font-size: 24px !important;
   }
+
   .timer-item {
-    padding: 4px 6px;
-    min-width: 30px;
+    padding: 4px 10px !important;
+    min-width: 35px !important;
   }
+
   .timer-separator {
-    font-size: 14px;
+    font-size: 16px !important;
+  }
+
+  .timer-label {
+    font-size: 14px !important;
+  }
+
+  .marquee-wrapper {
+    padding: 12px 0 !important;
+  }
+  .marquee span {
+    font-size: 13px !important;
+  }
+}
+
+/* ============================================ */
+/* ===== ОЧЕНЬ МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 400px) ===== */
+/* ============================================ */
+
+@media (max-width: 400px) {
+  .method-image-wrapper {
+    max-width: 100% !important;
+    height: 320px !important;
+    margin: 8px 0 15px 0 !important;
+    border-radius: 16px !important;
+    padding: 0 !important;
+  }
+
+  .method-title {
+    font-size: 20px !important;
+  }
+
+  .method-badge {
+    font-size: 11px !important;
+  }
+
+  .method-desc {
+    font-size: 13px !important;
+    margin: 0 0 12px 0 !important;
+  }
+
+  .method-btn {
+    padding: 12px 20px !important;
+    font-size: 13px !important;
+    max-width: 200px !important;
+  }
+
+  .timer-value {
+    font-size: 22px !important;
+  }
+
+  .timer-item {
+    padding: 4px 8px !important;
+    min-width: 30px !important;
+  }
+
+  .timer-separator {
+    font-size: 14px !important;
+  }
+
+  .timer-label {
+    font-size: 13px !important;
+  }
+
+  .marquee-wrapper {
+    padding: 10px 0 !important;
+  }
+  .marquee span {
+    font-size: 12px !important;
   }
 
   .pricing-full-card {
-    padding: 20px 8px;
+    padding: 20px 8px !important;
   }
   .pricing-card-main {
-    padding: 16px 12px;
-    border-radius: 16px;
+    padding: 16px 12px !important;
+    border-radius: 16px !important;
   }
   .pricing-title-main {
-    font-size: 18px;
+    font-size: 18px !important;
   }
   .price-main {
-    font-size: 22px;
+    font-size: 22px !important;
   }
   .pricing-card-main h4 {
-    font-size: 16px;
+    font-size: 18px !important;
   }
   .pricing-list li {
-    font-size: 12px;
-    padding: 3px 0;
-    gap: 8px;
+    font-size: 12px !important;
+    padding: 3px 0 !important;
+    gap: 8px !important;
   }
   .pricing-icon {
-    width: 15px;
-    height: 15px;
+    width: 15px !important;
+    height: 15px !important;
   }
   .pricing-btn-main {
-    font-size: 13px;
-    padding: 10px 16px;
+    font-size: 13px !important;
+    padding: 10px 16px !important;
   }
 
   .changes-title {
-    font-size: 16px;
+    font-size: 16px !important;
   }
   .changes-subtitle {
-    font-size: 12px;
+    font-size: 12px !important;
   }
   .white-box {
-    padding: 8px 10px;
-    border-radius: 16px;
+    padding: 8px 10px !important;
+    border-radius: 16px !important;
   }
   .change-item-title {
-    font-size: 13px;
+    font-size: 13px !important;
   }
   .change-item-desc {
-    font-size: 12px;
+    font-size: 12px !important;
   }
   .change-icon-img {
-    width: 20px;
-    height: 20px;
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
+
+/* ============================================ */
+/* ===== САМЫЕ МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 360px) ===== */
+/* ============================================ */
+
+@media (max-width: 360px) {
+  .method-image-wrapper {
+    max-width: 100% !important;
+    height: 280px !important;
+  }
+
+  .method-title {
+    font-size: 18px !important;
+  }
+
+  .method-badge {
+    font-size: 10px !important;
+  }
+
+  .method-desc {
+    font-size: 12px !important;
+  }
+
+  .method-btn {
+    padding: 10px 16px !important;
+    font-size: 12px !important;
+    max-width: 180px !important;
+  }
+
+  .timer-value {
+    font-size: 18px !important;
+  }
+
+  .timer-item {
+    padding: 3px 6px !important;
+    min-width: 25px !important;
+  }
+
+  .timer-separator {
+    font-size: 12px !important;
+  }
+
+  .timer-label {
+    font-size: 12px !important;
+  }
+
+  .marquee-wrapper {
+    padding: 8px 0 !important;
+  }
+  .marquee span {
+    font-size: 11px !important;
+  }
+}
+/* src/styles/MethodPage.css - Добавьте в конец файла */
+
+/* ============================================ */
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+/* ============================================ */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: #ffffff;
+  border-radius: 30px;
+  padding: 40px 35px;
+  max-width: 450px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: #999;
+  cursor: pointer;
+  transition: 0.3s;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: #F95B80;
+  transform: rotate(90deg);
+}
+
+.modal-title {
+  font-size: 26px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  color: #000000;
+  text-align: center;
+  margin: 0 0 8px 0;
+}
+
+.modal-subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  color: #666;
+  text-align: center;
+  margin: 0 0 25px 0;
+}
+
+.modal-tariff {
+  color: #F95B80;
+  font-weight: 600;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+}
+
+.form-group input {
+  padding: 14px 16px;
+  border: 2px solid #e8e8e8;
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  transition: 0.3s;
+  outline: none;
+  background: #f8f8f8;
+}
+
+.form-group input:focus {
+  border-color: #F95B80;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(249, 91, 128, 0.1);
+}
+
+.form-group input::placeholder {
+  color: #aaa;
+}
+
+.modal-submit-btn {
+  background: linear-gradient(135deg, #F95B80, #e04a6a);
+  color: #ffffff;
+  border: none;
+  padding: 16px 30px;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  box-shadow: 0 4px 20px rgba(249, 91, 128, 0.3);
+}
+
+.modal-submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(249, 91, 128, 0.4);
+}
+
+.modal-submit-btn:active {
+  transform: translateY(0);
+}
+
+.modal-footer {
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  color: #999;
+  text-align: center;
+  margin: 20px 0 0 0;
+}
+
+.modal-footer a {
+  color: #F95B80;
+  text-decoration: none;
+}
+
+.modal-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ===== АДАПТАЦИЯ МОДАЛКИ ДЛЯ МОБИЛЬНЫХ ===== */
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 30px 20px;
+    border-radius: 24px;
+  }
+
+  .modal-title {
+    font-size: 22px;
+  }
+
+  .modal-subtitle {
+    font-size: 14px;
+  }
+
+  .form-group input {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .modal-submit-btn {
+    padding: 14px 24px;
+    font-size: 16px;
+  }
+
+  .modal-close {
+    font-size: 28px;
+    top: 12px;
+    right: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .modal-content {
+    padding: 24px 16px;
+    border-radius: 20px;
+  }
+
+  .modal-title {
+    font-size: 20px;
+  }
+
+  .modal-subtitle {
+    font-size: 13px;
+  }
+
+  .form-group input {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .modal-submit-btn {
+    padding: 12px 20px;
+    font-size: 14px;
   }
 }
