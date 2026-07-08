@@ -206,57 +206,89 @@ function MethodPage() {
                   {String(time.hours).padStart(2, '0')} часов: {String(time.minutes).padStart(2, '0')} минут: {String(time.seconds).padStart(2, '0')} секунды
                 </span>
               </div>
+<div className="pricing-grid-main">
+  {/* ЛЁГКИЙ СТАРТ */}
+  <div className="pricing-card-main card-small">
+    <h4>Лёгкий старт</h4>
+    <div className="card-line"></div>
+    <p className="price-main">3 140 ₽</p>
+    <p className="discount-main">Скидка: 51%</p>
+    <p className="what-included">Что входит:</p>
+    <ul className="pricing-list">
+      <li>
+        <img src="/images/21.png" alt="check" className="pricing-icon" />
+        <span>Обновлённый Метод: 20 тренировок, питание по неделям, растяжка и восстановление</span>
+      </li>
+      <li>
+        <img src="/images/21.png" alt="check" className="pricing-icon" />
+        <span>5 лекций по питанию: уходит тяга к сладкому</span>
+      </li>
+    </ul>
+    <button className="pricing-btn-main">ЗАБРАТЬ НАБОР</button>
+  </div>
 
-              <div className="pricing-grid-main">
-                {/* ЛЁГКИЙ СТАРТ — МАЛЕНЬКАЯ КАРТОЧКА */}
-                <div className="pricing-card-main card-small">
-                  <div className="card-header"></div>
-                  <h4>Лёгкий старт</h4>
-                  <p className="price-main">3 140 ₽</p>
-                  <p className="discount-main">Скидка: 51%</p>
-                  <p className="what-included">Что входит:</p>
-                  <ul>
-                    <li>Обновлённый Метод: 20 тренировок, питание по неделям, растяжка и восстановление</li>
-                    <li>5 лекций по питанию: уходит тяга к сладкому</li>
-                  </ul>
-                  <button className="pricing-btn-main">ЗАБРАТЬ НАБОР</button>
-                </div>
+  {/* ПРЕОБРАЖЕНИЕ */}
+  <div className="pricing-card-main popular-main card-medium">
+    <h4>Преображение</h4>
+    <div className="card-line"></div>
+    <span className="badge-main">ВЫБОР БОЛЬШИНСТВА</span>
+    <p className="price-main">5 490 ₽</p>
+    <p className="discount-main">Скидка: 75%</p>
+    <p className="what-included">Что входит:</p>
+    <ul className="pricing-list">
+      <li>
+        <img src="/images/21.png" alt="check" className="pricing-icon" />
+        <span>Обновлённый Метод: 20 тренировок, питание по неделям, растяжка и восстановление</span>
+      </li>
+      <li>
+        <img src="/images/21.png" alt="check" className="pricing-icon" />
+        <span>5 лекций по питанию: уходит тяга к сладкому</span>
+      </li>
+      <li>
+        <img src="/images/21.png" alt="check" className="pricing-icon" />
+        <span>Курс питания с Вероникой Гусаковой: 42 урока без диет</span>
+      </li>
+      <li>
+        <img src="/images/21.png" alt="check" className="pricing-icon" />
+        <span>5 тренировок Стаса Свободы: плоский живот и осанка через дыхание</span>
+      </li>
+    </ul>
+    <button className="pricing-btn-main">ЗАБРАТЬ НАБОР</button>
+  </div>
 
-                {/* ПРЕОБРАЖЕНИЕ — СРЕДНЯЯ КАРТОЧКА */}
-                <div className="pricing-card-main popular-main card-medium">
-                  <div className="card-header"></div>
-                  <span className="badge-main">ВЫБОР БОЛЬШИНСТВА</span>
-                  <h4>Преображение</h4>
-                  <p className="price-main">5 490 ₽</p>
-                  <p className="discount-main">Скидка: 75%</p>
-                  <p className="what-included">Что входит:</p>
-                  <ul>
-                    <li>Обновлённый Метод: 20 тренировок, питание по неделям, растяжка и восстановление</li>
-                    <li>5 лекций по питанию: уходит тяга к сладкому</li>
-                    <li>Курс питания с Вероникой Гусаковой: 42 урока без диет</li>
-                    <li>5 тренировок Стаса Свободы: плоский живот и осанка через дыхание</li>
-                  </ul>
-                  <button className="pricing-btn-main">ЗАБРАТЬ НАБОР</button>
-                </div>
-
-                {/* МАКСИМУМ — БОЛЬШАЯ КАРТОЧКА */}
-                <div className="pricing-card-main card-large">
-                  <div className="card-header"></div>
-                  <span className="badge-max">МАКСИМАЛЬНЫЙ РЕЗУЛЬТАТ</span>
-                  <h4>Максимум</h4>
-                  <p className="price-main">6 890 ₽</p>
-                  <p className="discount-main">Скидка: 82%</p>
-                  <p className="what-included">Что входит:</p>
-                  <ul>
-                    <li>Обновлённый Метод: 20 тренировок, питание по неделям, растяжка и восстановление</li>
-                    <li>5 лекций по питанию: уходит тяга к сладкому</li>
-                    <li>Курс питания с Вероникой Гусаковой: 42 урока без диет</li>
-                    <li>5 тренировок Стаса Свободы: плоский живот и осанка через дыхание</li>
-                    <li>Курс «Жиросжигающий»: три уровня по 45 дней на максимальное жиросжигание</li>
-                  </ul>
-                  <button className="pricing-btn-main">ЗАБРАТЬ НАБОР</button>
-                </div>
-              </div>
+  {/* МАКСИМУМ */}
+  <div className="pricing-card-main card-large">
+    <h4>Максимум</h4>
+    <div className="card-line"></div>
+    <span className="badge-max">МАКСИМАЛЬНЫЙ РЕЗУЛЬТАТ</span>
+    <p className="price-main">6 890 ₽</p>
+    <p className="discount-main">Скидка: 82%</p>
+    <p className="what-included">Что входит:</p>
+    <ul className="pricing-list">
+      <li>
+        <img src="/images/21.png" alt="check" className="pricing-icon" />
+        <span>Обновлённый Метод: 20 тренировок, питание по неделям, растяжка и восстановление</span>
+      </li>
+      <li>
+        <img src="/images/21.png" alt="check" className="pricing-icon" />
+        <span>5 лекций по питанию: уходит тяга к сладкому</span>
+      </li>
+      <li>
+        <img src="/images/21.png" alt="check" className="pricing-icon" />
+        <span>Курс питания с Вероникой Гусаковой: 42 урока без диет</span>
+      </li>
+      <li>
+        <img src="/images/21.png" alt="check" className="pricing-icon" />
+        <span>5 тренировок Стаса Свободы: плоский живот и осанка через дыхание</span>
+      </li>
+      <li>
+        <img src="/images/21.png" alt="check" className="pricing-icon" />
+        <span>Курс «Жиросжигающий»: три уровня по 45 дней на максимальное жиросжигание</span>
+      </li>
+    </ul>
+    <button className="pricing-btn-main">ЗАБРАТЬ НАБОР</button>
+  </div>
+</div>
             </div>
           </div>
         </div>

@@ -378,15 +378,15 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-top: 120px;
-  padding: 40px 20px;
-  background: #F95B8020;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #F95B8008 0%, #F95B8015 50%, #F95B8008 100%);
   border-radius: 0;
   box-sizing: border-box;
   overflow: hidden;
 }
 
 .pricing-full-content {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 15px;
   text-align: center;
@@ -397,15 +397,16 @@
   font-weight: 400;
   font-family: 'Roboto', sans-serif;
   color: #777777;
-  margin: 0 0 20px 0;
+  margin: 50px 0 50px 0;
 }
 
 .pricing-title-main {
-  font-size: 28px;
-  font-weight: 700;
+  font-size: 36px;
+  font-weight: 500;
   font-family: 'Roboto', sans-serif;
   color: #000000;
-  margin: 0 0 10px 0;
+  margin: 50px 0 50px 0;
+  letter-spacing: -0.5px;
 }
 
 .pricing-title-main .pink-text {
@@ -413,11 +414,11 @@
 }
 
 .pricing-subtitle-main {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   font-family: 'Roboto', sans-serif;
   color: #555555;
-  margin: 0 0 20px 0;
+  margin: 0 0 30px 0;
 }
 
 .pricing-timer-mini {
@@ -425,7 +426,7 @@
   font-weight: 500;
   font-family: 'Roboto', sans-serif;
   color: #000000;
-  margin-bottom: 30px;
+  margin-bottom: 80px;
 }
 
 .pricing-timer-mini .pink-text {
@@ -437,20 +438,22 @@
   color: #F95B80;
   font-weight: 700;
   display: block;
-  font-size: 24px;
-  margin-top: 4px;
+  font-size: 28px;
+  margin-top: 18px;
 }
 
+/* ===== СЕТКА КАРТОЧЕК ===== */
 .pricing-grid-main {
   display: flex;
   justify-content: center;
-  align-items: stretch;
-  gap: 20px;
+  align-items: flex-start;
+  gap: 24px;
 }
 
+/* ===== КАРТОЧКА ===== */
 .pricing-card-main {
   border-radius: 30px;
-  padding: 15px;
+  padding: 30px 25px 25px;
   background: #ffffff;
   font-family: 'Gilroy', sans-serif;
   font-weight: 400;
@@ -458,90 +461,87 @@
   color: #000000;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  flex: 0 0 280px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  flex: 0 0 310px;
   position: relative;
-  transition: 0.3s;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   overflow: hidden;
+  text-align: left;
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .pricing-card-main:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.10);
 }
 
+/* ===== УБИРАЕМ ВЕРХНЮЮ ПОЛОСКУ ===== */
 .pricing-card-main .card-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 8px;
-  background: #F95B80;
-  border-radius: 30px 30px 0 0;
+  display: none;
 }
 
-.card-small {
-  min-height: 350px;
-}
-.card-medium {
-  min-height: 420px;
-}
-.card-large {
-  min-height: 520px;
-}
-
-.pricing-card-main.popular-main {
-  border: 1px solid #F95B80;
-  box-shadow: 0 0 20px #F95B8050 inset;
-  background: #ffffff;
+/* ===== ЗАГОЛОВОК КАРТОЧКИ ===== */
+.pricing-card-main h4 {
+  font-size: 28px;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  color: #F95B80;
+  margin: 0 0 6px 0;
 }
 
+/* ===== ПОЛОСКА ПОД НАЗВАНИЕМ ===== */
+.pricing-card-main .card-line {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #F95B80, #F95B8020);
+  border-radius: 2px;
+  margin-bottom: 8px;
+}
+
+.pricing-card-main.popular-main .card-line {
+  background: linear-gradient(90deg, #F95B80, #F95B8040);
+}
+
+/* ===== БЕЙДЖИ ПОД ПОЛОСКОЙ ===== */
 .pricing-card-main .badge-main {
-  position: absolute;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #F95B80;
+  display: inline-block;
+  background: linear-gradient(135deg, #F95B80, #e04a6a);
   color: #ffffff;
   font-family: 'Roboto', sans-serif;
   font-size: 11px;
-  font-weight: 600;
-  padding: 3px 16px;
+  font-weight: 700;
+  padding: 4px 18px;
   border-radius: 100px;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  z-index: 2;
+  letter-spacing: 1.5px;
+  margin: 0 0 10px 0;
+  align-self: flex-start;
+  box-shadow: 0 2px 12px rgba(249, 91, 128, 0.3);
 }
 
 .pricing-card-main .badge-max {
   display: inline-block;
-  background-color: #F95B80;
+  background: linear-gradient(135deg, #F95B80, #e04a6a);
   color: #ffffff;
   font-family: 'Roboto', sans-serif;
   font-size: 11px;
-  font-weight: 600;
-  padding: 3px 16px;
+  font-weight: 700;
+  padding: 4px 18px;
   border-radius: 100px;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
+  letter-spacing: 1.5px;
+  margin: 0 0 10px 0;
   align-self: flex-start;
+  box-shadow: 0 2px 12px rgba(249, 91, 128, 0.3);
 }
 
-.pricing-card-main h4 {
-  font-size: 20px;
-  font-weight: 600;
-  font-family: 'Roboto', sans-serif;
-  color: #000000;
-  margin: 10px 0 5px 0;
-}
-
+/* ===== ЦЕНА ===== */
 .price-main {
-  font-size: 28px;
-  font-weight: 700;
+  font-size: 34px;
+  font-weight: 800;
   font-family: 'Roboto', sans-serif;
   color: #F95B80;
-  margin: 0 0 2px 0;
+  margin: 4px 0 2px 0;
 }
 
 .discount-main {
@@ -549,63 +549,152 @@
   font-weight: 400;
   font-family: 'Roboto', sans-serif;
   color: #888888;
-  margin: 0 0 15px 0;
+  margin: 0 0 16px 0;
 }
 
+/* ===== "ЧТО ВХОДИТ" ===== */
 .what-included {
   font-size: 15px;
   font-weight: 600;
   font-family: 'Roboto', sans-serif;
   color: #000000;
-  margin: 0 0 8px 0;
+  margin: 0 0 12px 0;
+  text-align: left;
 }
 
-.pricing-card-main ul {
+/* ===== СПИСОК ===== */
+.pricing-list {
   list-style: none;
   padding: 0;
   margin: 0 0 20px 0;
   flex: 1;
 }
 
-.pricing-card-main ul li {
+.pricing-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
   font-size: 14px;
   font-weight: 400;
   font-family: 'Roboto', sans-serif;
-  color: #555555;
-  padding: 4px 0;
-  padding-left: 20px;
-  position: relative;
-  line-height: 1.4;
+  color: #444444;
+  padding: 6px 0;
+  line-height: 1.5;
+  text-align: left;
 }
 
-.pricing-card-main ul li::before {
-  content: '•';
-  position: absolute;
-  left: 0;
-  color: #F95B80;
-  font-weight: 700;
+.pricing-list li span {
+  flex: 1;
 }
 
+/* ===== ИКОНКА ===== */
+.pricing-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  display: block;
+}
+
+/* ===== КНОПКА ===== */
 .pricing-btn-main {
-  background-color: #F95B80;
+  background: linear-gradient(135deg, #F95B80, #e04a6a);
   color: #ffffff;
   border: none;
-  padding: 12px 20px;
-  font-size: 14px;
-  font-weight: 600;
+  padding: 14px 24px;
+  font-size: 15px;
+  font-weight: 700;
   font-family: 'Roboto', sans-serif;
   border-radius: 50px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   width: 100%;
   margin-top: 10px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(249, 91, 128, 0.25);
 }
 
 .pricing-btn-main:hover {
-  background-color: #e04a6a;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 32px rgba(249, 91, 128, 0.35);
+}
+
+/* ===== ПОПУЛЯРНАЯ КАРТОЧКА ===== */
+.pricing-card-main.popular-main {
+  border: 2px solid #F95B80;
+  box-shadow: 0 4px 24px rgba(249, 91, 128, 0.15);
   transform: scale(1.02);
+}
+
+.pricing-card-main.popular-main:hover {
+  transform: scale(1.04);
+  box-shadow: 0 12px 48px rgba(249, 91, 128, 0.25);
+}
+
+/* ============================================ */
+/* ===== ВЫСОТА КАРТОЧЕК ===== */
+/* ============================================ */
+
+.card-small {
+  min-height: 360px;
+}
+.card-medium {
+  min-height: 440px;
+}
+.card-large {
+  min-height: 520px;
+}
+
+/* ===== АДАПТИВНАЯ ВЫСОТА ===== */
+
+@media (max-width: 1024px) {
+  .card-small {
+    min-height: 340px;
+  }
+  .card-medium {
+    min-height: 400px;
+  }
+  .card-large {
+    min-height: 480px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-small {
+    min-height: 300px;
+  }
+  .card-medium {
+    min-height: 360px;
+  }
+  .card-large {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-small {
+    min-height: 260px;
+  }
+  .card-medium {
+    min-height: 320px;
+  }
+  .card-large {
+    min-height: 380px;
+  }
+}
+
+@media (max-width: 360px) {
+  .card-small {
+    min-height: 220px;
+  }
+  .card-medium {
+    min-height: 260px;
+  }
+  .card-large {
+    min-height: 320px;
+  }
 }
 
 /* ============================================ */
@@ -615,6 +704,23 @@
 @media (max-width: 1200px) {
   .method-bg-image {
     object-position: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .pricing-grid-main {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  .pricing-card-main {
+    flex: 0 0 280px;
+  }
+  .pricing-title-main {
+    font-size: 30px;
+  }
+  .pricing-card-main h4 {
+    font-size: 23px;
   }
 }
 
@@ -632,13 +738,6 @@
   }
   .method-title {
     font-size: 36px;
-  }
-  .pricing-grid-main {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .pricing-card-main {
-    flex: 0 0 260px;
   }
 }
 
@@ -754,41 +853,46 @@
     border-radius: 16px;
   }
   .pricing-full-card {
-    padding: 30px 15px;
+    padding: 40px 15px;
     margin-top: 60px;
-  }
-  .pricing-title-main {
-    font-size: 24px;
-  }
-  .pricing-subtitle-main {
-    font-size: 15px;
-  }
-  .pricing-timer-mini {
-    font-size: 16px;
-  }
-  .pricing-timer-mini-value {
-    font-size: 20px;
   }
   .pricing-grid-main {
     flex-direction: column;
     align-items: center;
+    gap: 20px;
   }
   .pricing-card-main {
     flex: 0 0 auto;
     width: 100%;
-    max-width: 320px;
+    max-width: 380px;
+    padding: 25px 20px;
+    border-radius: 24px;
   }
-  .card-small {
-    min-height: 300px;
+  .pricing-card-main.popular-main {
+    transform: scale(1);
   }
-  .card-medium {
-    min-height: 360px;
+  .pricing-card-main.popular-main:hover {
+    transform: scale(1.02);
   }
-  .card-large {
-    min-height: 440px;
+  .pricing-title-main {
+    font-size: 26px;
+  }
+  .pricing-subtitle-main {
+    font-size: 16px;
+  }
+  .pricing-timer-mini-value {
+    font-size: 24px;
+  }
+  .price-main {
+    font-size: 28px;
   }
   .pricing-card-main .badge-main {
     top: 12px;
+    font-size: 10px;
+    padding: 3px 14px;
+  }
+  .pricing-card-main h4 {
+    font-size: 22px;
   }
 }
 
@@ -839,16 +943,7 @@
     font-size: 20px;
   }
   .pricing-card-main {
-    max-width: 280px;
-  }
-  .card-small {
-    min-height: 260px;
-  }
-  .card-medium {
-    min-height: 320px;
-  }
-  .card-large {
-    min-height: 380px;
+    max-width: 340px;
   }
 }
 
@@ -874,7 +969,6 @@
     width: 100%;
   }
 
-  /* СКРЫВАЕМ ФОНОВУЮ КАРТИНКУ */
   .method-bg-image {
     display: none !important;
   }
@@ -893,7 +987,6 @@
     max-width: 100%;
   }
 
-  /* ===== ПОКАЗЫВАЕМ ЦЕНТРАЛЬНУЮ КАРТИНКУ ===== */
   .method-center-image {
     display: block !important;
     width: 100%;
@@ -910,7 +1003,6 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
 
-  /* ===== ВЕРХНЯЯ ЧАСТЬ ===== */
   .method-top {
     display: flex;
     flex-direction: column;
@@ -919,7 +1011,6 @@
     margin-bottom: 0;
   }
 
-  /* ===== НИЖНЯЯ ЧАСТЬ ===== */
   .method-bottom {
     display: flex;
     flex-direction: column;
@@ -928,7 +1019,6 @@
     padding-top: 10px;
   }
 
-  /* ===== БЕЙДЖ ===== */
   .method-badge {
     font-size: 12px;
     font-weight: 400;
@@ -940,7 +1030,6 @@
     max-width: 100%;
   }
 
-  /* ===== ЗАГОЛОВОК ===== */
   .method-title {
     font-size: 22px;
     font-weight: 700;
@@ -955,7 +1044,6 @@
     color: #F95B80;
   }
 
-  /* ===== ОПИСАНИЕ ===== */
   .method-desc {
     font-size: 13px;
     font-weight: 400;
@@ -972,7 +1060,6 @@
     font-weight: 500;
   }
 
-  /* ===== КНОПКА ===== */
   .method-btn {
     align-self: center;
     padding: 14px 25px;
@@ -987,7 +1074,6 @@
     margin-bottom: 15px;
   }
 
-  /* ===== VPN ===== */
   .method-vpn {
     font-size: 11px;
     font-weight: 400;
@@ -997,7 +1083,6 @@
     text-align: center;
   }
 
-  /* ===== ТАЙМЕР ===== */
   .method-timer {
     text-align: center;
     max-width: 100%;
@@ -1048,7 +1133,6 @@
     padding: 0 2px;
   }
 
-  /* ===== БЕГУЩАЯ СТРОКА ===== */
   .marquee span {
     font-size: 12px;
   }
@@ -1059,7 +1143,6 @@
     padding: 6px 0;
   }
 
-  /* ===== БЛОК "С МЕТОДОМ..." ===== */
   .changes-section {
     padding-top: 20px;
   }
@@ -1099,13 +1182,12 @@
     border-radius: 14px;
   }
 
-  /* ===== ПРАЙС ===== */
   .pricing-full-card {
-    padding: 20px 10px;
-    margin-top: 30px;
+    padding: 30px 10px;
+    margin-top: 40px;
   }
   .pricing-title-main {
-    font-size: 20px;
+    font-size: 22px;
   }
   .pricing-subtitle-main {
     font-size: 14px;
@@ -1114,28 +1196,39 @@
     font-size: 15px;
   }
   .pricing-timer-mini-value {
-    font-size: 18px;
+    font-size: 20px;
   }
   .price-main {
-    font-size: 24px;
+    font-size: 26px;
   }
   .pricing-card-main {
-    padding: 16px 14px;
     max-width: 100%;
+    padding: 20px 16px;
+    border-radius: 20px;
   }
-  .card-small {
-    min-height: 240px;
+  .pricing-card-main h4 {
+    font-size: 22px;
   }
-  .card-medium {
-    min-height: 280px;
+  .pricing-list li {
+    font-size: 13px;
+    padding: 4px 0;
+    gap: 10px;
   }
-  .card-large {
-    min-height: 340px;
+  .pricing-icon {
+    width: 17px;
+    height: 17px;
+  }
+  .pricing-btn-main {
+    font-size: 14px;
+    padding: 12px 20px;
   }
   .pricing-card-main .badge-main {
-    top: 8px;
-    font-size: 10px;
+    font-size:11px;
     padding: 2px 12px;
+  }
+  .pricing-card-main .badge-max {
+    font-size: 11px;
+    padding: 6px 12px;
   }
 }
 
@@ -1192,27 +1285,37 @@
   .timer-separator {
     font-size: 14px;
   }
-  .pricing-card-main {
-    padding: 12px 10px;
+
+  .pricing-full-card {
+    padding: 20px 8px;
   }
-  .price-main {
-    font-size: 20px;
+  .pricing-card-main {
+    padding: 16px 12px;
+    border-radius: 16px;
   }
   .pricing-title-main {
-    font-size: 17px;
+    font-size: 18px;
   }
-  .pricing-full-card {
-    padding: 16px 8px;
+  .price-main {
+    font-size: 22px;
   }
-  .card-small {
-    min-height: 200px;
+  .pricing-card-main h4 {
+    font-size: 16px;
   }
-  .card-medium {
-    min-height: 240px;
+  .pricing-list li {
+    font-size: 12px;
+    padding: 3px 0;
+    gap: 8px;
   }
-  .card-large {
-    min-height: 290px;
+  .pricing-icon {
+    width: 15px;
+    height: 15px;
   }
+  .pricing-btn-main {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+
   .changes-title {
     font-size: 16px;
   }

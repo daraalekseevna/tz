@@ -1,6 +1,5 @@
 // src/pages/ProgramsPage.jsx
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import '../styles/ProgramsPage.css';
 
 function ProgramsPage() {
@@ -11,6 +10,9 @@ function ProgramsPage() {
   });
 
   const [agreed, setAgreed] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+  const [partnerCode, setPartnerCode] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,22 +20,88 @@ function ProgramsPage() {
       ...prev,
       [name]: value
     }));
+    if (submitStatus) setSubmitStatus(null);
+    if (partnerCode) setPartnerCode(null);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const validateForm = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      alert('Пожалуйста, введите корректный email адрес');
+      return false;
+    }
+
+    if (formData.name.trim().length < 2) {
+      alert('Пожалуйста, введите ваше имя (минимум 2 символа)');
+      return false;
+    }
+
+    const phoneDigits = formData.phone.replace(/\D/g, '');
+    if (phoneDigits.length < 10) {
+      alert('Пожалуйста, введите корректный номер телефона (минимум 10 цифр)');
+      return false;
+    }
+
     if (!agreed) {
       alert('Пожалуйста, согласитесь на получение рассылки');
-      return;
+      return false;
     }
-    console.log('Данные формы:', formData);
-    alert('Промокод отправлен на вашу почту!');
+
+    return true;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!validateForm()) return;
+    
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    setPartnerCode(null);
+
+    try {
+      const response = await fetch('http://localhost:5000/api/applications', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        if (data.code) {
+          setPartnerCode(data.code);
+          setSubmitStatus('exists');
+          alert(`Этот email уже зарегистрирован! Ваш код: ${data.code}`);
+          return;
+        }
+        throw new Error(data.error || 'Ошибка отправки');
+      }
+
+      setSubmitStatus('success');
+      setPartnerCode(data.data.partnerCode);
+      
+      setFormData({
+        email: '',
+        name: '',
+        phone: ''
+      });
+      setAgreed(false);
+      
+    } catch (error) {
+      console.error('Ошибка:', error);
+      setSubmitStatus('error');
+      alert('Произошла ошибка. Пожалуйста, попробуйте позже.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="programs-page">
       <div className="container">
-
         <div className="programs-content">
           <h1 className="programs-title">Условия программы для амбассадоров</h1>
           
@@ -50,7 +118,7 @@ function ProgramsPage() {
               Зарегистрируйтесь, чтобы получить промокод амбассадора
             </h2>
 
-            <form onSubmit={handleSubmit} className="ambassador-form">
+            <form onSubmit={handleSubmit} className="ambassador-form" noValidate>
               <div className="form-group">
                 <input
                   type="email"
@@ -60,6 +128,7 @@ function ProgramsPage() {
                   onChange={handleChange}
                   required
                   className="form-input"
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -72,6 +141,7 @@ function ProgramsPage() {
                   onChange={handleChange}
                   required
                   className="form-input"
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -84,11 +154,16 @@ function ProgramsPage() {
                   onChange={handleChange}
                   required
                   className="form-input"
+                  disabled={isSubmitting}
                 />
               </div>
 
-              <button type="submit" className="submit-btn">
-                Получить промокод
+              <button 
+                type="submit" 
+                className={`submit-btn ${isSubmitting ? 'submitting' : ''}`}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Отправка...' : 'Получить промокод'}
               </button>
             </form>
 
@@ -103,6 +178,7 @@ function ProgramsPage() {
                   checked={agreed}
                   onChange={() => setAgreed(!agreed)}
                   className="checkbox-input"
+                  disabled={isSubmitting}
                 />
                 <span className="checkbox-text">
                   Я согласна на получение информационных и маркетинговых рассылок 
@@ -110,6 +186,22 @@ function ProgramsPage() {
                 </span>
               </label>
             </div>
+
+            {submitStatus === 'success' && partnerCode && (
+              <div className="success-message">
+              </div>
+            )}
+
+            {submitStatus === 'exists' && partnerCode && (
+              <div className="exists-message">
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="error-message">
+                Произошла ошибка. Пожалуйста, попробуйте позже.
+              </div>
+            )}
           </div>
         </div>
       </div>
