@@ -77,7 +77,6 @@ function ProgramsPage() {
         if (data.code) {
           setPartnerCode(data.code);
           setSubmitStatus('exists');
-          alert(`Этот email уже зарегистрирован! Ваш код: ${data.code}`);
           return;
         }
         throw new Error(data.error || 'Ошибка отправки');
@@ -85,7 +84,6 @@ function ProgramsPage() {
 
       setSubmitStatus('success');
       setPartnerCode(data.data.partnerCode);
-      alert(`🎉 Партнёрский код отправлен на вашу почту!\nКод: ${data.data.partnerCode}`);
       
       setFormData({
         email: '',
